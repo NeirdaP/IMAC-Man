@@ -3,7 +3,7 @@
 #include <GL/glew.h>
 #include <string>
 #include "FilePath.hpp"
-
+#define GLEW_STATIC
 #define GLIMAC_SHADER_SRC(str) #str
 
 namespace glimac {

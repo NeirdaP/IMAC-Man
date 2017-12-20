@@ -1,7 +1,7 @@
 #include "../include/glimac/SDLWindowManager.hpp"
 #include <iostream>
 
-#include <OpenGL/gl.h>
+#include <GL/gl.h>
 
 namespace glimac
 {

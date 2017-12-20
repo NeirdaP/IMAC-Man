@@ -30,7 +30,7 @@ private:
     //Calcule les vecteurs de direction à partir des angles Horizontaux et Verticaux
     void computeDirectionVectors(){
         m_FrontVector = glm::vec3 (cos(m_fTheta)*sin(m_fPhi), sin(m_fTheta), cos(m_fTheta)*cos(m_fPhi));
-        m_LeftVector = glm::vec3 (sin(m_fPhi + (float) M_PI_2), 0, cos(m_fPhi + (float) M_PI_2));
+        m_LeftVector = glm::vec3 (sin(m_fPhi + (float) M_PI / 2), 0, cos(m_fPhi + (float) M_PI / 2));
         m_UpVector = glm::cross(m_FrontVector, m_LeftVector);
     }
 

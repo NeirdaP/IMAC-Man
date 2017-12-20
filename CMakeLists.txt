@@ -17,6 +17,7 @@ if(UNIX)
 endif(UNIX)
 
 if(WIN32)
+    MESSAGE(${GLEW_LIBRARY})
     set(ALL_LIBRARIES mingw32 glimac SDL2main SDL2 glew32s opengl32 glu32 freeglut) #add the libraries options in the LIB_LIST variable
 endif(WIN32)
 
