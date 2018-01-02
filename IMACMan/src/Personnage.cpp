@@ -23,7 +23,7 @@ void Personnage::die(){
 
 
 
-int Personnage::getSpeed(){
+float Personnage::getSpeed(){
     return speed;
 }
 
@@ -33,7 +33,7 @@ bool Personnage::getIsPrey(){
 
 
 
-void Personnage::setSpeed(int s){
+void Personnage::setSpeed(float s){
     speed = s;
 }
 
