@@ -6,7 +6,7 @@ foreach(SRC_FILE ${SRC_FILES})
     get_filename_component(FILE ${SRC_FILE} NAME_WE)
     get_filename_component(DIR . NAME)
     set(OUTPUT ${DIR}_${FILE})
-    add_executable(${OUTPUT} ${SRC_FILE} ${HEADER_FILES} ${SHADER_FILES} ../glimac/include/glimac/FreeFlyCamera.hpp)
+    add_executable(${OUTPUT} ${SRC_FILE} ${HEADER_FILES} ${SHADER_FILES} ../glimac/include/glimac/FreeFlyCamera.hpp src/Personnage.cpp include/Personnage.h)
     target_link_libraries(${OUTPUT} ${ALL_LIBRARIES})
 endforeach()
 
