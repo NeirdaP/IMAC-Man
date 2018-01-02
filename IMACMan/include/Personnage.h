@@ -1,9 +1,13 @@
 //
-// Created by Idefix on 02/01/2018.
+// Created by Thibault on 02/01/2018.
 //
 
 #ifndef IMACGL_PERSONNAGE_H
 #define IMACGL_PERSONNAGE_H
+
+#include <iostream>
+#include <string>
+#include <vector>
 
 
 class Personnage {
@@ -13,16 +17,16 @@ private:
 
 public:
     Personnage();
-    void move();
-    void eat();
+    virtual void move();
+    virtual void eat();
     void die();
 
     //getters
-    int getSpeed();
+    float getSpeed();
     bool getIsPrey();
 
     //setters
-    void setSpeed(int s);
+    void setSpeed(float s);
     void setIsPrey(bool p);
 };
 
