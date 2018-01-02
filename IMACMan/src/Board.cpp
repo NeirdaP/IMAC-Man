@@ -1,5 +1,5 @@
 //
-// Created by Idefix on 02/01/2018.
+// Created by Thibault on 02/01/2018.
 //
 
 #include <iostream>
