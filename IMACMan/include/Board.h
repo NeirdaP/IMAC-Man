@@ -8,22 +8,26 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "../include/Labyrinth.h"
 
 class Board {
 private:
     int width;
-    int** labyrinth;
+    Labyrinth labyrinth;
+    int level;
 
 public:
     Board();
+    Board(int w);
+    void loadElements();
 
     //getters
     int getWidth();
-    int** getLabyrinth();
+    Labyrinth getLabyrinth();
 
     //setters
     void setWidth(int w);
-    void setLabyrinth(int** l);
+    void setLabyrinth(Labyrinth* l);
 };
 
 

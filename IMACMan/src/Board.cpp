@@ -7,14 +7,27 @@
 #include <vector>
 #include "../include/Board.h"
 
-Board::Board(){}
+Board::Board(){};
+
+Board::Board(int w){
+    this->width = w;
+};
+
+
+void Board::loadElements(){
+    Labyrinth* laby = new Labyrinth();
+    std::vector<int> l = {1, 1, 1, 1, 1,  1, 0, 1, 0, 1,  1, 0, 0, 0, 1,  1, 1, 0, 1, 1,  1, 1, 1, 1, 1};
+    laby->setLaby(l);
+    laby->setWidth(width);
+    setLabyrinth(laby);
+}
 
 //getters
 int Board::getWidth(){
     return width;
 }
 
-int** Board::getLabyrinth(){
+Labyrinth Board::getLabyrinth(){
     return labyrinth;
 }
 
@@ -23,6 +36,6 @@ void Board::setWidth(int w){
     width = w;
 }
 
-void Board::setLabyrinth(int** l){
-    labyrinth = l;
+void Board::setLabyrinth(Labyrinth* l){
+    labyrinth = *l;
 }

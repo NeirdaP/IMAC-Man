@@ -10,6 +10,12 @@
 #include <glimac/FreeFlyCamera.hpp>
 #include <vector>
 
+#include "include/Board.h"
+#include "include/Labyrinth.h"
+#include "include/Personnage.h"
+#include "include/Pacman.h"
+#include "include/Ghost.h"
+
 using namespace glimac;
 
 int main(int argc, char** argv) {
@@ -42,6 +48,9 @@ int main(int argc, char** argv) {
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
+    std::cout << "coucou" << std::endl;
+    Board(5);
+
 
     return EXIT_SUCCESS;
 }
