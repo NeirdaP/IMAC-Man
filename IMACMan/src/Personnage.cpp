@@ -11,6 +11,7 @@ Personnage::Personnage(){
     isAlive = true;
 }
 //test de la testance
+//test
 void Personnage::move(int action){
 switch(action){
     case 0:
