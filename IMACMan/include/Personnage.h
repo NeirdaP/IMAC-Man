@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "../include/Labyrinth.h"
 
 
 class Personnage {
@@ -21,7 +22,7 @@ private:
 
 public:
     Personnage();
-    virtual void move(int action = 0);
+    void move(int action, Labyrinth* laby);
     virtual void eat();
     void die();
 

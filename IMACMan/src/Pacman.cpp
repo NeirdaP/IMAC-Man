@@ -7,7 +7,12 @@
 #include <vector>
 #include "../include/Pacman.h"
 
-Pacman::Pacman(){}
+
+Pacman::Pacman(){
+    Personnage();
+    this->nbLives = 3;
+    setPosXY(1, 1);
+}
 
 void Pacman::move(){
 
@@ -18,11 +23,11 @@ void Pacman::eat(){
 }
 
 //getters
-int Pacman::getNbLifes(){
-    return nbLifes;
+int Pacman::getNbLives(){
+    return nbLives;
 }
 
 //setters
-void Pacman::setNbLifes(int l){
-    nbLifes = l;
+void Pacman::setNbLives(int l){
+    nbLives = l;
 }

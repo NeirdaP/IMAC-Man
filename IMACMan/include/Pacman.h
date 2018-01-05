@@ -12,7 +12,7 @@
 
 class Pacman : public Personnage{
 private:
-    int nbLifes;
+    int nbLives;
 
 public:
     Pacman();
@@ -21,10 +21,10 @@ public:
     void eat();
 
     //getters
-    int getNbLifes();
+    int getNbLives();
 
     //setters
-    void setNbLifes(int l);
+    void setNbLives(int l);
 
 };
 

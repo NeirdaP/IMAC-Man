@@ -23,7 +23,7 @@ public:
 
     //getters
     int getWidth();
-    Labyrinth getLabyrinth();
+    Labyrinth* getLabyrinth();
 
     //setters
     void setWidth(int w);

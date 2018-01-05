@@ -27,11 +27,19 @@ void Labyrinth::setWidth(int w){
 
 void Labyrinth::setLaby(std::vector<int> t){
     tabCases = t;
+}
+
+void Labyrinth::setOneCaseLaby(int x, int y, int value){
+    tabCases[x * width + y] = value;
+}
+
+
+void Labyrinth::printLaby(){
     for(int i = 0 ; i < width ; i++){
         for(int j = 0 ; j < width ; j++){
-            std::cout << tabCases[i] << " ";
+            std::cout << tabCases[j + width * i] << " ";
         }
         std::cout << std::endl;
     }
+    std::cout << std::endl << std::endl << std::endl;
 }
-

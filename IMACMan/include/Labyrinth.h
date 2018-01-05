@@ -25,6 +25,9 @@ public:
     //setters
     void setWidth(int w);
     void setLaby(std::vector<int> t);
+    void setOneCaseLaby(int x, int y, int value);
+
+    void printLaby();
 };
 
 

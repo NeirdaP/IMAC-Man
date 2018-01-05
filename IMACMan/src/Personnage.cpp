@@ -9,24 +9,56 @@
 
 Personnage::Personnage(){
     isAlive = true;
+    direction = 0;
 }
 
-void Personnage::move(int action){
-switch(action){
+void Personnage::move(int action, Labyrinth* laby){
+    laby->setOneCaseLaby((int)positionX, (int)positionY, 0);
+    switch(action){
     case 0:
-        //veut avancer tout droit
+        //veut aller en haut
         //véririfie s'il y a un mur, si oui rappelle move(action++)
+        if(laby->getLaby()[(positionX - 1) * laby->getWidth() + positionY] == 1){
+            action++;
+            move(action, laby);
+        }
+        else{
+            positionY--;
+        }
         break;
     case 1:
-        //veut tourner à droite
+        //veut aller à droite
+        if(laby->getLaby()[positionX * laby->getWidth() + (positionY + 1)] == 1){
+            action++;
+            move(action, laby);
+        }
+        else{
+            positionX++;
+        }
         break;
     case 2:
-        //veut touner à gauche
+        //veut aller en bas
+        if(laby->getLaby()[(positionX + 1) * laby->getWidth() + positionY] == 1){
+            action++;
+            move(action, laby);
+        }
+        else{
+            positionY++;
+        }
         break;
     case 3:
-        //veut faire demi tour
+        //veut aller à gauche
+        if(laby->getLaby()[positionX * laby->getWidth() + (positionY - 1)] == 1){
+            action++;
+            move(action, laby);
+        }
+        else{
+            positionX--;
+        }
         break;
     }
+    laby->setOneCaseLaby((int)positionX, (int)positionY, 9);
+    direction = action;
 }
 
 void Personnage::eat(){
