@@ -10,7 +10,7 @@
 Personnage::Personnage(){
     isAlive = true;
 }
-
+//test de la testance
 void Personnage::move(int action){
 switch(action){
     case 0:
@@ -95,6 +95,7 @@ void Personnage::setPosXY(float px, float py){
 void Personnage::setDirection(int d){
     direction = d;
 }
+
 
 
 
