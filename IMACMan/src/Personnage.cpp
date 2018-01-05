@@ -10,7 +10,7 @@
 Personnage::Personnage(){
     isAlive = true;
 }
-//test 2
+//test 2 de la testation 3
 void Personnage::move(int action){
 switch(action){
     case 0:
