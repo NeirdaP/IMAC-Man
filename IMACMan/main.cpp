@@ -68,8 +68,8 @@ int main(int argc, char** argv) {
         tabGhosts.push_back(ghost);
     }
 
-    int gameIsOn = 0;
-    while(gameIsOn < 12){
+    bool gameIsOn = true;
+    while(gameIsOn){
         int pDir = pacman->getDirection();
         Labyrinth * labyr = board->getLabyrinth();
         pacman->move(pDir, labyr);
@@ -83,7 +83,9 @@ int main(int argc, char** argv) {
 
         labyr->printLaby();
         //Sleep(1);
-        gameIsOn++;
+        if(!pacman->getIsAlive()){
+            gameIsOn = false;
+        }
     }
 
 
