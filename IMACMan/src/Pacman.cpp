@@ -14,6 +14,7 @@ Pacman::Pacman(){
     setPosXY(1, 1);
     setIsPrey(false);
     points = 0;
+    setDirection(0);
 }
 
 void Pacman::move(int action, Labyrinth* laby){
