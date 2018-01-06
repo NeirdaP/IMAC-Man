@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
     int nbGhosts = 4;
 
     //create Pacman
-    Personnage * pacman = new Pacman();
+    Pacman * pacman = new Pacman();
 
     std::vector<Ghost*> tabGhosts;
     for(int i = 0 ; i < nbGhosts ; i++){
@@ -69,7 +69,7 @@ int main(int argc, char** argv) {
     }
 
     int gameIsOn = 0;
-    while(gameIsOn < 10){
+    while(gameIsOn < 12){
         int pDir = pacman->getDirection();
         Labyrinth * labyr = board->getLabyrinth();
         pacman->move(pDir, labyr);
@@ -78,6 +78,7 @@ int main(int argc, char** argv) {
         for(int i = 0 ; i < nbGhosts ; i++){
             //gDir = tabGhosts[i]->getDirection();
             tabGhosts[i]->moveRandom(labyr);
+            tabGhosts[i]->eat(pacman);
         }
 
         labyr->printLaby();

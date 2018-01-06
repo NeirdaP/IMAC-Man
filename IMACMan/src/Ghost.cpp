@@ -10,6 +10,7 @@
 Ghost::Ghost(){
     Personnage();
     setPosXY(7, 7);
+    setIsPrey(true);
 }
 
 void Ghost::moveRandom(Labyrinth* laby){
@@ -75,8 +76,12 @@ void Ghost::move(int action, Labyrinth* laby){
     setDirection(action);
 }
 
-void Ghost::eat(){
-
+void Ghost::eat(Pacman* p){
+    if(getIsPrey()){
+        if(p->getPosX() == getPosX() && p->getPosY() == getPosY()){
+            p->die();
+        }
+    }
 }
 
 //getters

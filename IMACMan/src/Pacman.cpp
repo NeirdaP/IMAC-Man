@@ -12,6 +12,8 @@ Pacman::Pacman(){
     Personnage();
     this->nbLives = 3;
     setPosXY(1, 1);
+    setIsPrey(false);
+    points = 0;
 }
 
 void Pacman::move(int action, Labyrinth* laby){
@@ -69,6 +71,18 @@ void Pacman::move(int action, Labyrinth* laby){
 
 void Pacman::eat(){
 
+}
+
+void Pacman::die(){
+    if(nbLives > 0){
+        nbLives--;
+        std::cout << "Lives : " << nbLives << std::endl;
+        setPosXY(1, 1);
+    }
+    else{
+        setIsAlive(false);
+        std::cout << "----------- GAME OVER -----------" << std::endl;
+    }
 }
 
 //getters

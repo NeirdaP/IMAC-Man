@@ -24,7 +24,7 @@ public:
     Personnage();
     virtual void move(int action, Labyrinth* laby);
     virtual void eat();
-    void die();
+    virtual void die();
 
     //getters
     bool getIsAlive();

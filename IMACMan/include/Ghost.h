@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include "Personnage.h"
+#include "Pacman.h"
 
 class Ghost : public Personnage {
 private:
@@ -19,7 +20,7 @@ public:
 
     void move(int action, Labyrinth* laby);
     void moveRandom(Labyrinth* laby);
-    void eat();
+    void eat(Pacman* p);
 
     //getters
     float getRegenTimer();
