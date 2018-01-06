@@ -17,7 +17,8 @@ private:
 public:
     Ghost();
 
-    void move();
+    void move(int action, Labyrinth* laby);
+    void moveRandom(Labyrinth* laby);
     void eat();
 
     //getters

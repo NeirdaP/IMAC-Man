@@ -22,7 +22,7 @@ private:
 
 public:
     Personnage();
-    void move(int action, Labyrinth* laby);
+    virtual void move(int action, Labyrinth* laby);
     virtual void eat();
     void die();
 

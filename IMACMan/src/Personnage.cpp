@@ -12,7 +12,8 @@ Personnage::Personnage(){
 }
 
 void Personnage::move(int action, Labyrinth* laby){
-    laby->setOneCaseLaby((int)positionX, (int)positionY, 0);
+    std::cout << "fail wrong move function personnage" << std::endl;
+    /*laby->setOneCaseLaby((int)positionX, (int)positionY, 0);
     switch(action){
         case 0:
             //veut aller en haut
@@ -57,7 +58,7 @@ void Personnage::move(int action, Labyrinth* laby){
             break;
     }
     laby->setOneCaseLaby((int)positionX, (int)positionY, 9);
-    direction = action;
+    direction = action;*/
 }
 
 void Personnage::eat(){

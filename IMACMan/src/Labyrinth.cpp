@@ -37,7 +37,15 @@ void Labyrinth::setOneCaseLaby(int x, int y, int value){
 void Labyrinth::printLaby(){
     for(int i = 0 ; i < width ; i++){
         for(int j = 0 ; j < width ; j++){
-            std::cout << tabCases[j + width * i] << " ";
+            if(tabCases[j + width * i] == 1){
+                std::cout << "_ ";
+            }
+            else if(tabCases[j + width * i] == 0){
+                std::cout << "  ";
+            }
+            else{
+                std::cout << tabCases[j + width * i] << " ";
+            }
         }
         std::cout << std::endl;
     }

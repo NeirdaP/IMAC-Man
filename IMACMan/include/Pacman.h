@@ -17,7 +17,7 @@ private:
 public:
     Pacman();
 
-    void move();
+    void move(int action, Labyrinth* laby);
     void eat();
 
     //getters

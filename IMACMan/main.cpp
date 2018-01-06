@@ -57,17 +57,30 @@ int main(int argc, char** argv) {
     std::cout << "coucou" << std::endl;
     Board * board = new Board(9);
     board->getLabyrinth()->printLaby();
+    int nbGhosts = 4;
 
     //create Pacman
     Personnage * pacman = new Pacman();
 
+    std::vector<Ghost*> tabGhosts;
+    for(int i = 0 ; i < nbGhosts ; i++){
+        Ghost * ghost = new Ghost();
+        tabGhosts.push_back(ghost);
+    }
+
     int gameIsOn = 0;
     while(gameIsOn < 10){
-        int p = pacman->getDirection();
-        Labyrinth * gg = board->getLabyrinth();
-        pacman->move(p, gg);
+        int pDir = pacman->getDirection();
+        Labyrinth * labyr = board->getLabyrinth();
+        pacman->move(pDir, labyr);
 
-        gg->printLaby();
+        int gDir;
+        for(int i = 0 ; i < nbGhosts ; i++){
+            //gDir = tabGhosts[i]->getDirection();
+            tabGhosts[i]->moveRandom(labyr);
+        }
+
+        labyr->printLaby();
         //Sleep(1);
         gameIsOn++;
     }
