@@ -20,6 +20,11 @@ std::vector<int> Labyrinth::getLaby(){
     return tabCases;
 }
 
+int Labyrinth::getLabyCaseValue(int x, int y){
+    return tabCases[x * width + y];
+}
+
+
 //setters
 void Labyrinth::setWidth(int w){
     width = w;
@@ -41,6 +46,9 @@ void Labyrinth::printLaby(){
                 std::cout << "_ ";
             }
             else if(tabCases[j + width * i] == 0){
+                std::cout << ". ";
+            }
+            else if(tabCases[j + width * i] == 2){
                 std::cout << "  ";
             }
             else{

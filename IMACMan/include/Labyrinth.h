@@ -21,6 +21,7 @@ public:
     //getters
     int getWidth();
     std::vector<int> getLaby();
+    int getLabyCaseValue(int x, int y);
 
     //setters
     void setWidth(int w);

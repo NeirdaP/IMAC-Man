@@ -19,7 +19,7 @@ Pacman::Pacman(){
 void Pacman::move(int action, Labyrinth* laby){
     int positionX = (int)getPosX();
     int positionY = (int)getPosY();
-    laby->setOneCaseLaby(positionX, positionY, 0);
+    laby->setOneCaseLaby(positionX, positionY, 2);
     switch(action){
         case 0:
             //veut aller en haut
@@ -65,6 +65,9 @@ void Pacman::move(int action, Labyrinth* laby){
     }
     setPosX((float)positionX);
     setPosY((float)positionY);
+    if(laby->getLabyCaseValue(positionX, positionY) == 0){
+        points += 1000;
+    }
     laby->setOneCaseLaby(positionX, positionY, 9);
     setDirection(action);
 }
@@ -90,7 +93,15 @@ int Pacman::getNbLives(){
     return nbLives;
 }
 
+int Pacman::getPoints(){
+    return points;
+}
+
 //setters
 void Pacman::setNbLives(int l){
     nbLives = l;
+}
+
+void Pacman::setPoints(int p){
+    points += p;
 }
