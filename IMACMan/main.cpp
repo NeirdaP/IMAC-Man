@@ -12,7 +12,10 @@
 #include <vector>
 #include <string>
 #include <ctime>
+#if __WINDOWS__
 #include <windows.h>
+#endif __WINDOWS__
+
 #include <unistd.h>
 
 #include "include/Board.h"
