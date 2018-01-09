@@ -21,7 +21,7 @@ void Board::loadElements(){
 
     //create labyrinth
     Labyrinth* laby = new Labyrinth();
-    //0 : chemin avec pacgomme / 1 : mur / 2 : chemin sans pacgomme
+    //0 : chemin avec pacgomme / 1 : mur / 2 : chemin sans pacgomme 4 : super pac gomme  5 : fantôme 9 : pacman
     std::vector<int> l = {1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 0, 0, 0, 0, 0, 0, 0, 1,  1, 0, 1, 0, 1, 1, 1, 0, 1,  1, 0, 0, 0, 0, 0, 0, 0, 1,  1, 1, 0, 1, 0, 1, 1, 0, 1,  1, 1, 0, 1, 0, 0, 1, 0, 1,  1, 1, 0, 1, 1, 0, 0, 0, 1,  1, 1, 0, 0, 0, 0, 1, 0, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1};
     laby->setWidth(width);
     laby->setLaby(l);
@@ -48,3 +48,4 @@ void Board::setWidth(int w){
 void Board::setLabyrinth(Labyrinth* l){
     labyrinth = *l;
 }
+

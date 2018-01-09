@@ -25,7 +25,7 @@ void Pacman::move(int action, Labyrinth* laby){
         case 0:
             //veut aller en haut
             //véririfie s'il y a un mur, si oui rappelle move(action++)
-            if(laby->getLaby()[positionX * laby->getWidth() + (positionY - 1)] == 1){
+            if(laby->getLabyCaseValue(positionX, positionY) == 1){
                 action++;
                 move(action, laby);
             }
@@ -35,7 +35,7 @@ void Pacman::move(int action, Labyrinth* laby){
             break;
         case 1:
             //veut aller à droite
-            if(laby->getLaby()[(positionX + 1) * laby->getWidth() + positionY] == 1){
+            if(laby->getLabyCaseValue(positionX, positionY) == 1){
                 action++;
                 move(action, laby);
             }
@@ -45,7 +45,7 @@ void Pacman::move(int action, Labyrinth* laby){
             break;
         case 2:
             //veut aller en bas
-            if(laby->getLaby()[positionX * laby->getWidth() + (positionY + 1)] == 1){
+            if(laby->getLabyCaseValue(positionX, positionY) == 1){
                 action++;
                 move(action, laby);
             }
@@ -55,7 +55,7 @@ void Pacman::move(int action, Labyrinth* laby){
             break;
         case 3:
             //veut aller à gauche
-            if(laby->getLaby()[(positionX - 1) * laby->getWidth() + positionY] == 1){
+            if(laby->getLabyCaseValue(positionX, positionY) == 1){
                 action++;
                 move(action, laby);
             }
@@ -67,7 +67,11 @@ void Pacman::move(int action, Labyrinth* laby){
     setPosX((float)positionX);
     setPosY((float)positionY);
     if(laby->getLabyCaseValue(positionX, positionY) == 0){
-        points += 1000;
+        points += 10;
+    }
+
+    if(laby->getLabyCaseValue(positionX, positionY) == 4){
+        points += 50;
     }
     laby->setOneCaseLaby(positionX, positionY, 9);
     setDirection(action);

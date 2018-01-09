@@ -16,6 +16,8 @@ private:
     Labyrinth labyrinth;
     int level;
 
+
+
 public:
     Board();
     Board(int w);
@@ -28,6 +30,8 @@ public:
     //setters
     void setWidth(int w);
     void setLabyrinth(Labyrinth* l);
+
+    //methods
 };
 
 
