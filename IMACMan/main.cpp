@@ -11,7 +11,7 @@
 #include <glimac/FreeFlyCamera.hpp>
 #include <vector>
 #include <string>
-#include <ctime>
+#include <chrono>
 #if __WINDOWS__
 #include <windows.h>
 #endif __WINDOWS__
@@ -27,8 +27,9 @@
 //using namespace glimac;
 
 int main(int argc, char** argv) {
- /*   // Initialize SDL and open a window
-    SDLWindowManager windowManager(800, 600, "GLImac");
+ /*   // Initialize SDL and open a window */
+  // SDLWindowManager windowManager(800, 600, "GLImac");
+    /*
     std::cout << "coucou test" << std::endl;
     // Initialize glew for OpenGL3+ support
     GLenum glewInitError = glewInit();
@@ -73,6 +74,7 @@ int main(int argc, char** argv) {
 
     bool gameIsOn = true;
     while(gameIsOn){
+
         board->displayScore(pacman);
         int pDir = pacman->getDirection();
         Labyrinth * labyr = board->getLabyrinth();
