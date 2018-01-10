@@ -49,3 +49,8 @@ void Board::setLabyrinth(Labyrinth* l){
     labyrinth = *l;
 }
 
+//methods
+void Board::displayScore(Pacman *p) {
+    std::cout << "Score :" << p->getPoints() << std::endl << std::endl;
+}
+

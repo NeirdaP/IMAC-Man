@@ -73,6 +73,7 @@ int main(int argc, char** argv) {
 
     bool gameIsOn = true;
     while(gameIsOn){
+        board->displayScore(pacman);
         int pDir = pacman->getDirection();
         Labyrinth * labyr = board->getLabyrinth();
         pacman->move(pDir, labyr);

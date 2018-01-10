@@ -9,6 +9,8 @@
 #include <string>
 #include <vector>
 #include "../include/Labyrinth.h"
+#include "../include/Personnage.h"
+#include "../include/Pacman.h"
 
 class Board {
 private:
@@ -32,6 +34,7 @@ public:
     void setLabyrinth(Labyrinth* l);
 
     //methods
+    void displayScore(Pacman * p);
 };
 
 
