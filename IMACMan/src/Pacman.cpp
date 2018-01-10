@@ -63,7 +63,11 @@ void Pacman::move(int action, Labyrinth* laby){
                 positionX--;
             }
             break;
+
+        default: action =0;
     }
+
+
     setPosX((float)positionX);
     setPosY((float)positionY);
     if(laby->getLabyCaseValue(positionX, positionY) == 0){
