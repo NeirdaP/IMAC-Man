@@ -68,6 +68,7 @@ void Ghost::move(int action, Labyrinth* laby){
             else{
                 positionX--;
             }
+        default: action = 0;
             break;
     }
     setPosX((float)positionX);
