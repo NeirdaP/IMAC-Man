@@ -151,7 +151,7 @@ void Pacman::canEatGhost(glimac::SDLWindowManager& windowManager) {
 }
 
 int Pacman::keyPressed(glimac::SDLWindowManager windowManager) {
-    if(windowManager.isKeyPressed(SDLK_UP)){
+    /*if(windowManager.isKeyPressed(SDLK_UP)){
         return 1;
     }
     if(windowManager.isKeyPressed(SDLK_RIGHT)){
@@ -168,7 +168,7 @@ int Pacman::keyPressed(glimac::SDLWindowManager windowManager) {
         std::cout << "--------PAUSE--------" << std::endl;
         getchar();
     }
-    return 0;
+    return 0;*/
 }
 
 

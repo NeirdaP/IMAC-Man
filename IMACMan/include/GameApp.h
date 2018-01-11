@@ -27,6 +27,7 @@ public:
     GameApp();
     void appInit();
     void appLoop(glimac::SDLWindowManager windowManager);
+    int checkKeyPressed(glimac::SDLWindowManager windowManager);
 };
 
 
