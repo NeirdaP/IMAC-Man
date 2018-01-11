@@ -28,7 +28,6 @@ public:
     //getters
     bool getIsAlive();
     float getSpeed();
-    bool getIsPrey();
     float getPosX();
     float getPosY();
     int getDirection();
@@ -36,7 +35,6 @@ public:
     //setters
     void setIsAlive(bool a);
     void setSpeed(float s);
-    void setIsPrey(bool p);
     void setPosX(float px);
     void setPosY(float py);
     void setPosXY(float px, float py);

@@ -31,13 +31,15 @@ public:
     static Pacman *getInstPac();
     double getEatBegin() const;
     double getEatDuration() const;
-
+    bool getIsPrey() const;
 
     //setters
     void setNbLives(int l);
     void setPoints(int p);
     void setEatBegin(double eatBegin);
     void setEatDuration(double eatDuration);
+    void setIsPrey(bool isPrey);
+
 
     //methods
     void move(int action, Labyrinth* laby);

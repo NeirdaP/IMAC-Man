@@ -65,7 +65,7 @@ void Pacman::move(int action, Labyrinth* laby){
 
     if(laby->getLabyCaseValue(positionX, positionY) == 4){
         points += 50;
-        setIsPrey(true);
+        isPrey = true;
     }
 
     laby->setOneCaseLaby(positionX, positionY, 9);
@@ -100,6 +100,18 @@ Pacman *Pacman::getInstPac() {
     return pacman;
 }
 
+double Pacman::getEatBegin() const {
+    return eatBegin;
+}
+
+double Pacman::getEatDuration() const {
+    return eatDuration;
+}
+
+bool Pacman::getIsPrey() const{
+    return isPrey;
+}
+
 //setters
 void Pacman::setNbLives(int l){
     nbLives = l;
@@ -109,19 +121,32 @@ void Pacman::setPoints(int p){
     points += p;
 }
 
+void Pacman::setEatDuration(double eatDuration) {
+    Pacman::eatDuration = eatDuration;
+}
+
+void Pacman::setIsPrey(bool isPrey) {
+    Pacman::isPrey = isPrey;
+}
+
+void Pacman::setEatBegin(double eatBegin) {
+    Pacman::eatBegin = eatBegin;
+}
+
+
+
 //methods
 
 
-
 void Pacman::canEatGhost(glimac::SDLWindowManager& windowManager) {
-    if(getIsPrey() && !eatBegin){
+    if(isPrey && !eatBegin){
         eatBegin = windowManager.getTime();
     }
    /* if( windowManager.getTime() <= eatBegin +eatDuration){
     }*/
     if(windowManager.getTime() >= eatBegin +eatDuration){
         eatBegin = 0;
-        setIsPrey(false);
+        isPrey = false;
     }
 }
 
@@ -146,20 +171,5 @@ int Pacman::keyPressed(glimac::SDLWindowManager windowManager) {
     return 0;
 }
 
-double Pacman::getEatBegin() const {
-    return eatBegin;
-}
-
-void Pacman::setEatBegin(double eatBegin) {
-    Pacman::eatBegin = eatBegin;
-}
-
-double Pacman::getEatDuration() const {
-    return eatDuration;
-}
-
-void Pacman::setEatDuration(double eatDuration) {
-    Pacman::eatDuration = eatDuration;
-}
 
 
