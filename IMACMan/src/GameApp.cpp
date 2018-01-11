@@ -8,6 +8,7 @@
 #include "../include/Personnage.h"
 #include "../include/Pacman.h"
 #include "../include/Ghost.h"
+#include <Windows.h>
 
 GameApp::GameApp(){
     nbGhosts = 4;
@@ -22,6 +23,7 @@ void GameApp::appInit(){
     //create Pacman
     pacman = Pacman::getInstPac(); //singleton pacman
 
+    //std::vector<Ghost*> tabGhosts;
     for(int i = 0 ; i < nbGhosts ; i++){
         Ghost * ghost = new Ghost();
         tabGhosts.push_back(ghost);
@@ -50,12 +52,12 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
             tabGhosts[i]->moveRandom(labyr);
             tabGhosts[i]->eat(pacman);
         }
+        Sleep(1000);
 
         labyr->printLaby();
-        //Sleep(1);
-        int tt = (int)windowManager.getTime();
-        int bt = board->getTime();
-        if(!pacman->getIsAlive() || tt == bt){
+
+        std::cout << "temps ecoule: " << windowManager.getTime() << " secondes" << std::endl;
+        if(!pacman->getIsAlive() || (int)windowManager.getTime()== board->getTime()){
             gameIsOn = false;
         }
     }

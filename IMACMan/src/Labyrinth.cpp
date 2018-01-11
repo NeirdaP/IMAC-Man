@@ -45,7 +45,7 @@ void Labyrinth::printLaby(){
         for(int j = 0 ; j < width ; j++){
             switch(tabCases[j + width * i]){
 
-                case 0: std::cout << ".  ";
+                case 0: std::cout << ". ";
                     break;
 
                 case 1: std::cout << "= ";
