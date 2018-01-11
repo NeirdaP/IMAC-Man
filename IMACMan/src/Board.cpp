@@ -50,7 +50,7 @@ int Board::getTime() const {
 
  Board* Board::getInstBoard(){
     if (!board)
-        board = new Board(9,500);
+        board = new Board(9,5000);
     return board;
 }
 

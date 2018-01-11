@@ -22,7 +22,6 @@ void GameApp::appInit(){
     //create Pacman
     pacman = Pacman::getInstPac(); //singleton pacman
 
-    //std::vector<Ghost*> tabGhosts;
     for(int i = 0 ; i < nbGhosts ; i++){
         Ghost * ghost = new Ghost();
         tabGhosts.push_back(ghost);
@@ -51,7 +50,9 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
 
         labyr->printLaby();
         //Sleep(1);
-        if(!pacman->getIsAlive() || (int)windowManager.getTime()== board->getTime()){
+        int tt = (int)windowManager.getTime();
+        int bt = board->getTime();
+        if(!pacman->getIsAlive() || tt == bt){
             gameIsOn = false;
         }
     }

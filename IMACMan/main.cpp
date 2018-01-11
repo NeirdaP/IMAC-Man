@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
-    std::cout << "coucou" << std::endl;
+    //std::cout << "coucou" << std::endl;
 
     GameApp * app = new GameApp();
     app->appInit();
