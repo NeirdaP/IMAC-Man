@@ -10,8 +10,13 @@
 Ghost::Ghost(){
     Personnage();
     setPosXY(7, 7);
-    setIsPrey(true);
 }
+
+
+Ghost::~Ghost(){
+ std::cout << "fantôme détruit" << std::endl;
+}
+
 
 void Ghost::moveRandom(Labyrinth* laby){
     //std::srand(std::time(nullptr));
@@ -78,9 +83,14 @@ void Ghost::move(int action, Labyrinth* laby){
 }
 
 void Ghost::eat(Pacman* p){
-    if(getIsPrey()){
-        if(p->getPosX() == getPosX() && p->getPosY() == getPosY()){
-            p->die();
+    if(p->getPosX() == getPosX() && p->getPosY() == getPosY()){
+            if(!p->getIsPrey()) {
+                p->die();
+            }
+        else{
+                p->setPoints(p->getPoints()+100);
+             delete(this);
+
         }
     }
 }
