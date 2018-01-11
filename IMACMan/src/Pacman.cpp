@@ -56,22 +56,26 @@ void Pacman::move(int action, Labyrinth* laby){
         default: action =0;
     }
 
-
     setPosX((float)positionX);
     setPosY((float)positionY);
-    if(laby->getLabyCaseValue(positionX, positionY) == 0){
-        points += 10;
-    }
 
-    if(laby->getLabyCaseValue(positionX, positionY) == 4){
+    switch(laby->getLabyCaseValue(positionX, positionY)){
+        case 0: points += 10;
+            break;
+
+        case 4:{
         points += 50;
         isPrey = true;
-    }
+            //tempEffect.insert("EatTimer",);
+         }break;
 
+        case 5:
+
+    default: break;
+    }
     laby->setOneCaseLaby(positionX, positionY, 9);
     setDirection(action);
 }
-
 void Pacman::die(){
     if(nbLives > 0){
         nbLives--;
@@ -139,15 +143,15 @@ void Pacman::setEatBegin(double eatBegin) {
 
 
 void Pacman::canEatGhost(glimac::SDLWindowManager& windowManager) {
-    if(isPrey && !eatBegin){
+
+  /*  if(isPrey && !eatBegin){
         eatBegin = windowManager.getTime();
     }
-   /* if( windowManager.getTime() <= eatBegin +eatDuration){
-    }*/
     if(windowManager.getTime() >= eatBegin +eatDuration){
         eatBegin = 0;
         isPrey = false;
     }
+    */
 }
 
 int Pacman::keyPressed(glimac::SDLWindowManager windowManager) {

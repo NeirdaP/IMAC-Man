@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <map>
 #include <glimac/SDLWindowManager.hpp>
 #include "Personnage.h"
 
@@ -21,6 +21,8 @@ private:
     static Pacman * pacman; //singleton pacman
     double eatBegin;
     double eatDuration;
+    double BonusDuration;
+    std::map<std::string,double> tempEffect;
     bool isPrey;//définit si le personnage chasse ou est chassé par les autres personnages;
 
 public:
@@ -44,8 +46,11 @@ public:
     //methods
     void move(int action, Labyrinth* laby);
     void die();
+    void update();
     void canEatGhost(glimac::SDLWindowManager &windowManager);
     int keyPressed(glimac::SDLWindowManager windowmanager);
+    void generateBonus(glimac::SDLWindowManager windowmanager);
+
 
 };
 
