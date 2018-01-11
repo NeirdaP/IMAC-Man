@@ -18,16 +18,19 @@ private:
     Labyrinth labyrinth;
     int level;
     int time;
-
-public:
     Board();
     Board(int w, int ntime);
+    static Board * board; // singleton
+
+public:
+
     void loadElements();
 
     //getters
     int getWidth();
     Labyrinth* getLabyrinth();
     int getTime() const;
+    static Board *getInstBoard();
 
     //setters
     void setWidth(int w);
@@ -39,5 +42,5 @@ public:
     void displayLives(Pacman *p);
 };
 
-
+Board* Board::board = nullptr;
 #endif //IMACGL_BOARD_H

@@ -29,6 +29,7 @@ using namespace glimac;
 int main(int argc, char** argv) {
    // Initialize SDL and open a window */
    SDLWindowManager windowManager(800, 600, "IITRE");
+    SDLWindowManager &refWinMa = windowManager;
 
 /*    std::cout << "coucou test" << std::endl;
     // Initialize glew for OpenGL3+ support
@@ -59,13 +60,14 @@ int main(int argc, char** argv) {
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
     std::cout << "coucou" << std::endl;
-    Board * board = new Board(9,500);
+    Board *board = Board::getInstBoard(); //singleton board
     board->getLabyrinth()->printLaby();
+
     int nbGhosts = 4;
     int pDir = 0;
 
     //create Pacman
-    Pacman * pacman = new Pacman();
+    Pacman * pacman = Pacman::getInstPac(); //singleton pacman
 
     std::vector<Ghost*> tabGhosts;
     for(int i = 0 ; i < nbGhosts ; i++){

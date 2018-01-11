@@ -12,6 +12,7 @@ Labyrinth::Labyrinth(){
 }
 
 //getters
+
 int Labyrinth::getWidth(){
     return width;
 }
@@ -62,3 +63,4 @@ void Labyrinth::printLaby(){
     }
     std::cout << std::endl << std::endl << std::endl;
 }
+

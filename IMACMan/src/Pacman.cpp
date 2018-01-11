@@ -90,6 +90,13 @@ int Pacman::getPoints(){
     return points;
 }
 
+Pacman *Pacman::getInstPac() {
+    if(!pacman){
+        pacman = new Pacman();
+    }
+    return pacman;
+}
+
 //setters
 void Pacman::setNbLives(int l){
     nbLives = l;
@@ -100,7 +107,7 @@ void Pacman::setPoints(int p){
 }
 
 //methods
-void Pacman::eatGhost() {
+void Pacman::eatGhost(glimac::SDLWindowManager windowManager) {
 
 }
 
@@ -119,3 +126,5 @@ int Pacman::keyPressed(glimac::SDLWindowManager windowManager) {
     }
     return 0;
 }
+
+

@@ -16,9 +16,9 @@ private:
     std::vector<int> tabCases;
 
 public:
-    Labyrinth();
 
     //getters
+    Labyrinth();
     int getWidth();
     std::vector<int> getLaby();
     int getLabyCaseValue(int x, int y);
