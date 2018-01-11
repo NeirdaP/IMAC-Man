@@ -8,6 +8,7 @@
 #include "../include/OpenGLHandler.hpp"
 
 int OpenGLHandler::start(const std::string &dirPath){
+#if __APPLE__
     // Initialize glew for OpenGL3+ support
     GLenum glewInitError = glewInit();
 
@@ -32,7 +33,7 @@ int OpenGLHandler::start(const std::string &dirPath){
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
     std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
 
-
+#endif
 }
 
 OpenGLHandler::OpenGLHandler() {
