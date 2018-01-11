@@ -37,7 +37,10 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
         std::cout << "Time :" << (int)(board->getTime() - windowManager.getTime()) << std::endl;
 
         //std::cout << "ok"  << std::endl;
-        pDir = checkKeyPressed(windowManager);
+        SDL_Event e;
+        while(windowManager.pollEvent(e)){
+            pDir = checkKeyPressed(e);
+        }
         Labyrinth * labyr = board->getLabyrinth();
         pacman->move(pDir, labyr);
 
@@ -58,32 +61,27 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
     }
 }
 
-int GameApp::checkKeyPressed(glimac::SDLWindowManager windowManager){
-    //while(!done){
-        // Event loop:
-        SDL_Event e;
-        while(windowManager.pollEvent(e)){
-            if (e.type == SDL_KEYDOWN){
-                if (e.key.keysym.sym == SDLK_z){
-                    return 1;
-                }
-                else if (e.key.keysym.sym == SDLK_d){
-                    return 2;
-                }
-                else if (e.key.keysym.sym == SDLK_s){
-                    return 3;
-                }
-                else if (e.key.keysym.sym == SDLK_q){
-                    return 4;
-                }/*
-                else if (e.key.keysym.sym == SDLK_UP){
-                    pacman->zoom();
-                } else if (e.key.keysym.sym == SDLK_DOWN){
-                    pacman->dezoom();
-                }*/
-            } else if (e.type == SDL_QUIT) {
-                //done = true; // Leave the loop after this iteration
-            }
+int GameApp::checkKeyPressed(SDL_Event e){
+    if (e.type == SDL_KEYDOWN){
+        if (e.key.keysym.sym == SDLK_z){
+            return 1;
         }
+        else if (e.key.keysym.sym == SDLK_d){
+            return 2;
+        }
+        else if (e.key.keysym.sym == SDLK_s){
+            return 3;
+        }
+        else if (e.key.keysym.sym == SDLK_q){
+            return 4;
+        }/*
+        else if (e.key.keysym.sym == SDLK_UP){
+            pacman->zoom();
+        } else if (e.key.keysym.sym == SDLK_DOWN){
+            pacman->dezoom();
+        }*/
+    } else if (e.type == SDL_QUIT) {
+        //done = true; // Leave the loop after this iteration
+    }
     //}
 }
