@@ -80,10 +80,6 @@ float Personnage::getSpeed(){
     return speed;
 }
 
-bool Personnage::getIsPrey(){
-    return isPrey;
-}
-
 float Personnage::getPosX(){
     return positionX;
 }
@@ -107,9 +103,6 @@ void Personnage::setSpeed(float s){
     speed = s;
 }
 
-void Personnage::setIsPrey(bool p){
-    isPrey = p;
-}
 
 void Personnage::setPosX(float px){
     positionX = px;

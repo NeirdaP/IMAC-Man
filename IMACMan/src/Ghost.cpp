@@ -17,6 +17,17 @@ Ghost::~Ghost(){
  std::cout << "fantôme détruit" << std::endl;
 }
 
+//getters
+float Ghost::getRegenTimer(){
+    return regenerationTimer;
+}
+
+//setters
+void Ghost::setRegenTimer(float t){
+    regenerationTimer = t;
+}
+
+
 
 void Ghost::moveRandom(Labyrinth* laby){
     //std::srand(std::time(nullptr));
@@ -93,15 +104,5 @@ void Ghost::eat(Pacman* p){
 
         }
     }
-}
-
-//getters
-float Ghost::getRegenTimer(){
-    return regenerationTimer;
-}
-
-//setters
-void Ghost::setRegenTimer(float t){
-    regenerationTimer = t;
 }
 
