@@ -91,7 +91,7 @@ int Pacman::getPoints(){
 }
 
 Pacman *Pacman::getInstPac() {
-    if(!pacman){
+   if(!pacman){
         pacman = new Pacman();
     }
     return pacman;
@@ -124,6 +124,13 @@ int Pacman::keyPressed(glimac::SDLWindowManager windowManager) {
     if(windowManager.isKeyPressed(SDLK_LEFT)){
         return 4;
     }
+
+    if(windowManager.isKeyPressed(SDLK_p)){
+        std::cout << "Pause" << std::endl;
+        getchar();
+    }
+
+
     return 0;
 }
 

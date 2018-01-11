@@ -46,7 +46,7 @@ int Board::getTime() const {
     return time;
 }
 
-static Board* Board::getInstBoard(){
+ Board* Board::getInstBoard(){
     if (!board)
         board = new Board(9,500);
     return board;
