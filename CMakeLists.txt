@@ -10,7 +10,7 @@ find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 
-include_directories(${SDL2_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} glimac/include third-party/include)
+include_directories(${SDL2_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} glimac/include glOverload/include third-party/include)
 
 if(UNIX)
     set(ALL_LIBRARIES glimac ${SDL2_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY} ${GLUT_LIBRARY} ${GLU_LIBRARY})
@@ -22,6 +22,7 @@ if(WIN32)
 endif(WIN32)
 
 add_subdirectory(glimac)
+add_subdirectory(glOverload)
 
 #file(GLOB TP_DIRECTORIES "TP*")
 
