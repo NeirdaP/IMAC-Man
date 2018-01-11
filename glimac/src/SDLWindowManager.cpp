@@ -3,8 +3,8 @@
 
 #if __WINDOWS__
 #include <GL/gl.h>
-#else
 #include <GL/glew.h>
+#endif
 
 namespace glimac
 {
@@ -79,4 +79,3 @@ namespace glimac
         return 0.001f * SDL_GetTicks();
     }
 }
-#endif __WINDOWS__

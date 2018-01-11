@@ -17,24 +17,26 @@ private:
     int width;
     Labyrinth labyrinth;
     int level;
-
-
+    int time;
 
 public:
     Board();
-    Board(int w);
+    Board(int w, int ntime);
     void loadElements();
 
     //getters
     int getWidth();
     Labyrinth* getLabyrinth();
+    int getTime() const;
 
     //setters
     void setWidth(int w);
     void setLabyrinth(Labyrinth* l);
+    void setTime(int time);
 
     //methods
     void displayScore(Pacman * p);
+    void displayLives(Pacman *p);
 };
 
 

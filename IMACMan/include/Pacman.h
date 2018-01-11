@@ -8,8 +8,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Personnage.h"
 #include <glimac/SDLWindowManager.hpp>
+#include "Personnage.h"
+
 
 class Pacman : public Personnage{
 private:
@@ -34,6 +35,7 @@ public:
     void move(int action, Labyrinth* laby);
     void die();
     void eatGhost();
+    int keyPressed(glimac::SDLWindowManager windowmanager);
 
 };
 

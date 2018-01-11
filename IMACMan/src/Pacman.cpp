@@ -23,45 +23,30 @@ void Pacman::move(int action, Labyrinth* laby){
     int positionY = (int)getPosY();
     laby->setOneCaseLaby(positionX, positionY, 2);
     switch(action){
-        case 0:
+        case 1:
             //veut aller en haut
             //véririfie s'il y a un mur, si oui rappelle move(action++)
-            if(laby->getLabyCaseValue(positionX, positionY - 1) == 1){
-                action++;
-                move(action, laby);
-            }
-            else{
+            if(laby->getLabyCaseValue(positionX, positionY - 1) != 1){
                 positionY--;
             }
             break;
-        case 1:
+        case 2:
             //veut aller à droite
-            if(laby->getLabyCaseValue(positionX + 1, positionY) == 1){
-                action++;
-                move(action, laby);
-            }
-            else{
+            if(laby->getLabyCaseValue(positionX + 1, positionY) != 1){
                 positionX++;
             }
             break;
-        case 2:
+        case 3:
             //veut aller en bas
-            if(laby->getLabyCaseValue(positionX, positionY + 1) == 1){
-                action++;
-                move(action, laby);
-            }
-            else{
+            if(laby->getLabyCaseValue(positionX, positionY + 1) != 1){
                 positionY++;
             }
             break;
-        case 3:
+        case 4:
             //veut aller à gauche
-            if(laby->getLabyCaseValue(positionX - 1, positionY) == 1){
+            if(laby->getLabyCaseValue(positionX - 1, positionY) != 1){
                 action++;
                 move(action, laby);
-            }
-            else{
-                positionX--;
             }
             break;
 
@@ -118,9 +103,19 @@ void Pacman::setPoints(int p){
 void Pacman::eatGhost() {
 
 }
-/*    for(auto runUntil = std::chrono::system_clock::now() + std::chrono::seconds(10);
-        std::chrono::system_clock::now() < runUntil;)
-    {
 
+int Pacman::keyPressed(glimac::SDLWindowManager windowManager) {
+    if(windowManager.isKeyPressed(SDLK_UP)){
+        return 1;
     }
-   */
+    if(windowManager.isKeyPressed(SDLK_RIGHT)){
+        return 2;
+    }
+    if(windowManager.isKeyPressed(SDLK_DOWN)){
+        return 3;
+    }
+    if(windowManager.isKeyPressed(SDLK_LEFT)){
+        return 4;
+    }
+    return 0;
+}

@@ -59,9 +59,10 @@ int main(int argc, char** argv) {
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
     std::cout << "coucou" << std::endl;
-    Board * board = new Board(9);
+    Board * board = new Board(9,500);
     board->getLabyrinth()->printLaby();
     int nbGhosts = 4;
+    int pDir = 0;
 
     //create Pacman
     Pacman * pacman = new Pacman();
@@ -76,7 +77,11 @@ int main(int argc, char** argv) {
     while(gameIsOn){
 
         board->displayScore(pacman);
-        int pDir = pacman->getDirection();
+        board->displayLives(pacman);
+        std::cout << "Time :" << (int)(board->getTime() -windowManager.getTime()) << std::endl;
+
+        //std::cout << "ok"  << std::endl;
+        pDir = pacman->keyPressed(windowManager);
         Labyrinth * labyr = board->getLabyrinth();
         pacman->move(pDir, labyr);
 
@@ -89,7 +94,7 @@ int main(int argc, char** argv) {
 
         labyr->printLaby();
         //Sleep(1);
-        if(!pacman->getIsAlive()){
+        if(!pacman->getIsAlive() || (int)windowManager.getTime()== board->getTime()){
             gameIsOn = false;
         }
     }

@@ -11,9 +11,10 @@
 
 Board::Board(){};
 
-Board::Board(int w){
+Board::Board(int w, int ntime){
     this->width = w;
     loadElements();
+    time = ntime;
 };
 
 
@@ -40,6 +41,10 @@ Labyrinth* Board::getLabyrinth(){
     return &labyrinth;
 }
 
+int Board::getTime() const {
+    return time;
+}
+
 //setters
 void Board::setWidth(int w){
     width = w;
@@ -49,8 +54,19 @@ void Board::setLabyrinth(Labyrinth* l){
     labyrinth = *l;
 }
 
+void Board::setTime(int time) {
+    Board::time = time;
+}
+
+
 //methods
 void Board::displayScore(Pacman *p) {
-    std::cout << "Score :" << p->getPoints() << std::endl << std::endl;
+    std::cout << "Score :" << p->getPoints() << std::endl;
 }
+
+void Board::displayLives(Pacman *p) {
+    std::cout << "Lives :" << p->getNbLives() << std::endl << std::endl;
+}
+
+
 
