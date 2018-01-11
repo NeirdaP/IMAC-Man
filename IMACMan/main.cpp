@@ -23,12 +23,13 @@
 #include "include/Personnage.h"
 #include "include/Pacman.h"
 #include "include/Ghost.h"
+#include "include/GameApp.h"
 
 using namespace glimac;
 
 int main(int argc, char** argv) {
    // Initialize SDL and open a window */
-   SDLWindowManager windowManager(800, 600, "IITRE");
+   SDLWindowManager windowManager(800, 600, "TITRE");
     SDLWindowManager &refWinMa = windowManager;
 
 /*    std::cout << "coucou test" << std::endl;
@@ -60,7 +61,13 @@ int main(int argc, char** argv) {
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
     std::cout << "coucou" << std::endl;
-    Board *board = Board::getInstBoard(); //singleton board
+
+    GameApp * app = new GameApp();
+    app->appInit();
+    app->appLoop(windowManager);
+
+
+    /*Board *board = Board::getInstBoard(); //singleton board
     board->getLabyrinth()->printLaby();
 
     int nbGhosts = 4;
@@ -73,9 +80,9 @@ int main(int argc, char** argv) {
     for(int i = 0 ; i < nbGhosts ; i++){
         Ghost * ghost = new Ghost();
         tabGhosts.push_back(ghost);
-    }
+    }*/
 
-    bool gameIsOn = true;
+    /*bool gameIsOn = true;
     while(gameIsOn){
 
         board->displayScore(pacman);
@@ -99,7 +106,7 @@ int main(int argc, char** argv) {
         if(!pacman->getIsAlive() || (int)windowManager.getTime()== board->getTime()){
             gameIsOn = false;
         }
-    }
+    }*/
 
 
     return EXIT_SUCCESS;
