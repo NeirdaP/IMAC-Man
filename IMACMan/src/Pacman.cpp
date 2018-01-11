@@ -8,6 +8,8 @@
 #include "../include/Pacman.h"
 
 
+Pacman * Pacman::pacman = nullptr ;
+
 Pacman::Pacman(){
     Personnage();
     this->nbLives = 3;

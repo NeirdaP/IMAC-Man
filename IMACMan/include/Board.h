@@ -42,5 +42,4 @@ public:
     void displayLives(Pacman *p);
 };
 
-Board* Board::board = nullptr;
 #endif //IMACGL_BOARD_H

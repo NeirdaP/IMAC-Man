@@ -42,5 +42,4 @@ public:
 
 };
 
-Pacman* Pacman::pacman = nullptr;
 #endif //IMACGL_PACMAN_H
