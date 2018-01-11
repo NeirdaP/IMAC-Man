@@ -15,6 +15,7 @@ Pacman::Pacman(){
     setIsPrey(false);
     points = 0;
     setDirection(0);
+    canEat = false;
 }
 
 void Pacman::move(int action, Labyrinth* laby){
@@ -76,13 +77,11 @@ void Pacman::move(int action, Labyrinth* laby){
 
     if(laby->getLabyCaseValue(positionX, positionY) == 4){
         points += 50;
+        canEat = true;
     }
+
     laby->setOneCaseLaby(positionX, positionY, 9);
     setDirection(action);
-}
-
-void Pacman::eat(){
-
 }
 
 void Pacman::die(){
@@ -114,3 +113,14 @@ void Pacman::setNbLives(int l){
 void Pacman::setPoints(int p){
     points += p;
 }
+
+//methods
+void Pacman::eatGhost() {
+
+}
+/*    for(auto runUntil = std::chrono::system_clock::now() + std::chrono::seconds(10);
+        std::chrono::system_clock::now() < runUntil;)
+    {
+
+    }
+   */

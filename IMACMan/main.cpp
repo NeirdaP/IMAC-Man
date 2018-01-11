@@ -1,4 +1,4 @@
-#include <glimac/SDLWindowManager.hpp>
+#include "glimac/SDLWindowManager.hpp"
 #include <GL/glew.h>
 #define GLEW_STATIC
 #include <iostream>
@@ -14,7 +14,7 @@
 #include <chrono>
 #if __WINDOWS__
 #include <windows.h>
-#endif __WINDOWS__
+#endif
 
 #include <unistd.h>
 
@@ -24,13 +24,13 @@
 #include "include/Pacman.h"
 #include "include/Ghost.h"
 
-//using namespace glimac;
+using namespace glimac;
 
 int main(int argc, char** argv) {
- /*   // Initialize SDL and open a window */
-  // SDLWindowManager windowManager(800, 600, "GLImac");
-    /*
-    std::cout << "coucou test" << std::endl;
+   // Initialize SDL and open a window */
+   SDLWindowManager windowManager(800, 600, "IITRE");
+
+/*    std::cout << "coucou test" << std::endl;
     // Initialize glew for OpenGL3+ support
     GLenum glewInitError = glewInit();
 
@@ -53,8 +53,8 @@ int main(int argc, char** argv) {
     program.use();
 
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
-    std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
-*/
+    std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl; */
+
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/

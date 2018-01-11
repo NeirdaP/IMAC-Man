@@ -9,18 +9,18 @@
 #include <string>
 #include <vector>
 #include "Personnage.h"
+#include <glimac/SDLWindowManager.hpp>
 
 class Pacman : public Personnage{
 private:
     int nbLives;
     int points;
+    bool canEat;
+
 
 public:
+    //constructor
     Pacman();
-
-    void move(int action, Labyrinth* laby);
-    void eat();
-    void die();
 
     //getters
     int getNbLives();
@@ -29,6 +29,11 @@ public:
     //setters
     void setNbLives(int l);
     void setPoints(int p);
+
+    //methods
+    void move(int action, Labyrinth* laby);
+    void die();
+    void eatGhost();
 
 };
 
