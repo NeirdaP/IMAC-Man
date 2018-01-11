@@ -17,7 +17,7 @@ private:
 
 public:
     Ghost();
-
+    ~Ghost();
     void move(int action, Labyrinth* laby);
     void moveRandom(Labyrinth* laby);
     void eat(Pacman* p);

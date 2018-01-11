@@ -14,10 +14,11 @@ Pacman::Pacman(){
     Personnage();
     this->nbLives = 3;
     setPosXY(1, 1);
-    setIsPrey(false);
+    isPrey = false;
     points = 0;
     setDirection(0);
-    canEat = false;
+    eatBegin = 0;
+    eatDuration = 10;
 }
 
 void Pacman::move(int action, Labyrinth* laby){
@@ -64,7 +65,7 @@ void Pacman::move(int action, Labyrinth* laby){
 
     if(laby->getLabyCaseValue(positionX, positionY) == 4){
         points += 50;
-        canEat = true;
+        setIsPrey(true);
     }
 
     laby->setOneCaseLaby(positionX, positionY, 9);
@@ -109,12 +110,23 @@ void Pacman::setPoints(int p){
 }
 
 //methods
-void Pacman::eatGhost(glimac::SDLWindowManager windowManager) {
 
+
+
+void Pacman::canEatGhost(glimac::SDLWindowManager& windowManager) {
+    if(getIsPrey() && !eatBegin){
+        eatBegin = windowManager.getTime();
+    }
+   /* if( windowManager.getTime() <= eatBegin +eatDuration){
+    }*/
+    if(windowManager.getTime() >= eatBegin +eatDuration){
+        eatBegin = 0;
+        setIsPrey(false);
+    }
 }
 
 int Pacman::keyPressed(glimac::SDLWindowManager windowManager) {
-    /*if(windowManager.isKeyPressed(SDLK_UP)){
+    if(windowManager.isKeyPressed(SDLK_UP)){
         return 1;
     }
     if(windowManager.isKeyPressed(SDLK_RIGHT)){
@@ -130,8 +142,24 @@ int Pacman::keyPressed(glimac::SDLWindowManager windowManager) {
     if(windowManager.isKeyPressed(SDLK_p)){
         std::cout << "--------PAUSE--------" << std::endl;
         getchar();
-    }*/
+    }
     return 0;
+}
+
+double Pacman::getEatBegin() const {
+    return eatBegin;
+}
+
+void Pacman::setEatBegin(double eatBegin) {
+    Pacman::eatBegin = eatBegin;
+}
+
+double Pacman::getEatDuration() const {
+    return eatDuration;
+}
+
+void Pacman::setEatDuration(double eatDuration) {
+    Pacman::eatDuration = eatDuration;
 }
 
 

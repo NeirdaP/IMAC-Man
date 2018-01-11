@@ -22,6 +22,7 @@ private:
     Board(int w, int ntime);
     static Board * board; // singleton
 
+
 public:
 
     void loadElements();
@@ -40,6 +41,7 @@ public:
     //methods
     void displayScore(Pacman * p);
     void displayLives(Pacman *p);
+
 };
 
 #endif //IMACGL_BOARD_H
