@@ -14,14 +14,25 @@
 class Ghost : public Personnage {
 private:
     float regenerationTimer;
+    float deactivatedTime;
+public:
+    float getDeactivatedTime() const;
+
+    void setDeactivatedTime(float deactivatedTime);
+
+private:
     bool active;
+public:
+    bool isActive() const;
+
+    void setActive(bool active);
 
 public:
     Ghost();
     ~Ghost();
     void move(int action, Labyrinth* laby);
     void moveRandom(Labyrinth* laby);
-    void eat(Pacman* p);
+    void eat(Pacman* p,glimac::SDLWindowManager& windowManager);
 
     //getters
     float getRegenTimer();

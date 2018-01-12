@@ -31,6 +31,7 @@ public:
     bool appLoop(glimac::SDLWindowManager windowManager);
     void checkKeyPressed(SDL_Event e);
     void appDisallow();
+    void appRegenerateghost(glimac::SDLWindowManager windowManager);
 };
 
 

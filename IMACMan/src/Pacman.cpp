@@ -167,14 +167,14 @@ void Pacman::setEatBegin(double eatBegin) {
 
 void Pacman::canEatGhost(glimac::SDLWindowManager& windowManager) {
 
-  /*  if(isPrey && !eatBegin){
+    if(isPrey && !eatBegin){
         eatBegin = windowManager.getTime();
     }
     if(windowManager.getTime() >= eatBegin +eatDuration){
         eatBegin = 0;
         isPrey = false;
     }
-    */
+
 }
 
 

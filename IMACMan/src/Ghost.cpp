@@ -11,6 +11,7 @@ Ghost::Ghost(){
     Personnage();
     setPosXY(7, 7);
     active = true;
+    regenerationTimer = 10;
 }
 
 
@@ -101,18 +102,33 @@ void Ghost::move(int action, Labyrinth* laby){
     setDirection(action);
 }
 
-void Ghost::eat(Pacman* p){
+void Ghost::eat(Pacman* p,glimac::SDLWindowManager& windowManager){
     if(p->getPosX() == getPosX() && p->getPosY() == getPosY()){
             if(!p->getIsPrey()) {
                 p->die();
             }
         else if(p->getIsPrey()){
-                std::cout << "Vous avez mange un fantôme" << std::endl;
+                std::cout <<"--------------------" << std::endl << "Vous avez mange un fantome" << std::endl << "--------------------" << std::endl;
                 p->setPoints(p->getPoints()+100);
                 active = false;
-
-
+                deactivatedTime = windowManager.getTime();
         }
     }
+}
+
+bool Ghost::isActive() const {
+    return active;
+}
+
+void Ghost::setActive(bool active) {
+    Ghost::active = active;
+}
+
+float Ghost::getDeactivatedTime() const {
+    return deactivatedTime;
+}
+
+void Ghost::setDeactivatedTime(float deactivatedTime) {
+    Ghost::deactivatedTime = deactivatedTime;
 }
 
