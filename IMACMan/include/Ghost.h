@@ -13,8 +13,8 @@
 
 class Ghost : public Personnage {
 private:
-    float regenerationTimer;
-    float deactivatedTime;
+    float regenerationTimer; //temps au bout duquel le fantôme se régénère
+    float deactivatedTime;  // moment ou le fnatôme a été désactivé
 public:
     float getDeactivatedTime() const;
 
@@ -30,9 +30,9 @@ public:
 public:
     Ghost();
     ~Ghost();
-    void move(int action, Labyrinth* laby);
-    void moveRandom(Labyrinth* laby);
-    void eat(Pacman* p,glimac::SDLWindowManager& windowManager);
+    void move(int action, Labyrinth* laby); //déplacement fantôme
+    void moveRandom(Labyrinth* laby); //déplacement aléatoire des fantômes
+    void eat(Pacman* p,glimac::SDLWindowManager& windowManager); // gstion de qui mange qui
 
     //getters
     float getRegenTimer();

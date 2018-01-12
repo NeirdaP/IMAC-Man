@@ -15,16 +15,17 @@
 class Pacman : public Personnage{
 
 private:
-    int nbLives;
-    int points;
+    int nbLives; // nombres de vies
+    int points; // nombre de points
     //Pacman();
     //static Pacman * pacman; //singleton pacman
-    double eatBegin;
-    double eatDuration;
+    double eatBegin; //temps à partir duquel pacman a mangé un super pacgom
+    double eatDuration; //temps que pacman peut manger fantôme
     bool isPrey;//définit si le personnage chasse ou est chassé par les autres personnages;
 
 public:
     Pacman();
+
     //getters
     int getNbLives();
     int getPoints();
@@ -41,9 +42,9 @@ public:
 
 
     //methods
-    void move(int action, Labyrinth* laby, glimac::SDLWindowManager &windowManager);
-    void die();
-    void canEatGhost(glimac::SDLWindowManager &windowManager);
+    void move(int action, Labyrinth* laby, glimac::SDLWindowManager &windowManager); // gère le déplacement du pacman
+    void die(); // gestion du nombre de vie
+    void canEatGhost(glimac::SDLWindowManager &windowManager); // met à jour si le pacman peut toujours manger des fantômes
     ~Pacman();
 
 
