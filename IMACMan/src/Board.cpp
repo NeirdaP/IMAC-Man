@@ -35,6 +35,7 @@ void Board::loadElements(){
 
 }
 
+
 //getters
 int Board::getWidth(){
     return width;

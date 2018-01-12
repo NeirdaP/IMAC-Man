@@ -17,8 +17,8 @@ class Pacman : public Personnage{
 private:
     int nbLives;
     int points;
-    Pacman();
-    static Pacman * pacman; //singleton pacman
+    //Pacman();
+    //static Pacman * pacman; //singleton pacman
     double eatBegin;
     double eatDuration;
     double BonusDuration;
@@ -26,7 +26,7 @@ private:
     bool isPrey;//définit si le personnage chasse ou est chassé par les autres personnages;
 
 public:
-
+    Pacman();
     //getters
     int getNbLives();
     int getPoints();
@@ -49,6 +49,7 @@ public:
     void update();
     void canEatGhost(glimac::SDLWindowManager &windowManager);
     void generateBonus(glimac::SDLWindowManager windowmanager);
+    ~Pacman();
 
 
 };

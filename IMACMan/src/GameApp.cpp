@@ -2,6 +2,9 @@
 // Created by Thibault on 11/01/2018.
 //
 
+#include <iostream>
+#include <vector>
+
 #include "../include/GameApp.h"
 #include "../include/Board.h"
 #include "../include/Labyrinth.h"
@@ -22,7 +25,8 @@ void GameApp::appInit(){
     int pDir = 0;
 
     //create Pacman
-    pacman = Pacman::getInstPac(); //singleton pacman
+    //pacman = Pacman::getInstPac(); //singleton pacman
+    pacman = new Pacman();
 
     //std::vector<Ghost*> tabGhosts;
     for(int i = 0 ; i < nbGhosts ; i++){
@@ -103,10 +107,9 @@ void GameApp::checkKeyPressed(SDL_Event e){
 }
 
 void GameApp::appDisallow(){
-    delete board->getLabyrinth();
-    delete board;
-    delete pacman;
+    pacman = nullptr;
     for(int i = 0 ; i < nbGhosts ; ++i){
-        delete tabGhosts[i];
+        tabGhosts.pop_back();
     }
+    tabGhosts.clear();
 }
