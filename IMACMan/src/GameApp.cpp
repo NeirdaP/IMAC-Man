@@ -46,44 +46,47 @@ void GameApp::appInit(){
     appRenderer->renderModels();
 }
 
-bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
+bool GameApp::appLoop(glimac::SDLWindowManager windowManager) {
     gameIsOn = true;
-    Labyrinth * labyr;
-    while(gameIsOn){
+    Labyrinth *labyr;
+    while (gameIsOn) {
 
         board->displayScore(pacman);
         board->displayLives(pacman);
-        std::cout << "Time :" << (int)(board->getTime() - windowManager.getTime()) << std::endl;
+        std::cout << "Time :" << (int) (board->getTime() - windowManager.getTime()) << std::endl;
         labyr = board->getLabyrinth();
         labyr->printLaby();
 
         //std::cout << "ok"  << std::endl;
         SDL_Event e;
-        while(windowManager.pollEvent(e)){
+        while (windowManager.pollEvent(e)) {
             checkKeyPressed(e);
         }
         GameApp::appRegenerateghost(windowManager);
         pacman->canEatGhost(windowManager);
-        pacman->move(pDir, labyr);
+        labyr->updateBonus(windowManager, pacman);
+        pacman->move(pDir, labyr, windowManager);
 
         //int gDir;
-        for(int i = 0 ; i < nbGhosts ; i++){
+        for (int i = 0; i < nbGhosts; i++) {
             //gDir = tabGhosts[i]->getDirection();
             tabGhosts[i]->moveRandom(labyr);
-            tabGhosts[i]->eat(pacman,windowManager);
-            std::cout <<"pac fant " << i << "pac pos x"<<tabGhosts[i]->getPosX() <<"pac posy" <<tabGhosts[i]->getPosY() << std::endl << std::endl;
-        }
-        std::cout <<"pac posx" <<pacman->getPosX() <<"pac posy" <<pacman->getPosY() << std::endl << std::endl;
-        Sleep(1000);
+            tabGhosts[i]->eat(pacman, windowManager);
 
-        if(!(pacman->getIsAlive()) || (int)windowManager.getTime()== board->getTime()){
-            std::cout << "OK false" << std::endl;
+            //Pause 1 seconde windows et mac
+            double timePause = windowManager.getTime();
+            do {
+            } while (windowManager.getTime() <= timePause + 1);
+
+
+            if (!(pacman->getIsAlive()) || (int) windowManager.getTime() == board->getTime()) {
+                std::cout << "OK false" << std::endl;
 //            gameIsOn = false;
+            }
         }
+        return startAgain;
     }
-    return startAgain;
 }
-
 void GameApp::checkKeyPressed(SDL_Event e){
     if (e.type == SDL_KEYDOWN){
         if (e.key.keysym.sym == SDLK_q){
@@ -100,6 +103,11 @@ void GameApp::checkKeyPressed(SDL_Event e){
         }
         else if (e.key.keysym.sym == SDLK_z){
             pDir = 4;
+            return;
+        }
+        else if (e.key.keysym.sym == SDLK_p){
+            std::cout << "Pause" << std::endl;
+            getchar();
             return;
         }
         else if (e.key.keysym.sym == SDLK_ESCAPE){

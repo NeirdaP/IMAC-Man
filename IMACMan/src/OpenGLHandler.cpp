@@ -6,6 +6,9 @@
 #include <fstream>
 #include <iostream>
 #include "../include/OpenGLHandler.hpp"
+#if __WINDOWS__
+#include <windows.h>
+#endif
 
 int OpenGLHandler::start(const std::string &dirPath){
 #if __APPLE__
@@ -35,7 +38,6 @@ int OpenGLHandler::start(const std::string &dirPath){
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
     std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
     glEnable(GL_DEPTH_TEST);
-
 #endif
     return EXIT_SUCCESS;
 }

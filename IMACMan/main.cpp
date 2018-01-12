@@ -17,7 +17,7 @@
 #include <windows.h>
 #endif
 
-#include <SDL_mixer.h>
+//#include <SDL_mixer.h>
 
 #include <unistd.h>
 
@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
 
     OpenGLHandler glHandler = OpenGLHandler::getInstance();
     glHandler.start((std::string) argv[0]);
-
+/*
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
     {
         std::cout << Mix_GetError() << std::endl;
@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
 
     Mix_CloseAudio();
 
-
+*/
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/

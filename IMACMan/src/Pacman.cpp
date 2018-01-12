@@ -21,7 +21,7 @@ Pacman::Pacman(){
     eatDuration = 10;
 }
 
-void Pacman::move(int action, Labyrinth* laby){
+void Pacman::move(int action, Labyrinth* laby,glimac::SDLWindowManager &windowManager){
     int positionX = (int)getPosX();
     int positionY = (int)getPosY();
     laby->setOneCaseLaby(positionX, positionY, 2);
@@ -66,8 +66,11 @@ void Pacman::move(int action, Labyrinth* laby){
         case 4:
             points += 50;
             isPrey = true;
-            //tempEffect.insert("EatTimer",);
             break;
+
+        case 8: laby->applyBonus(windowManager,this);
+            break;
+
         case 17:
             //va du portail droit au portail haut
             setPosX(1);

@@ -21,8 +21,6 @@ private:
     //static Pacman * pacman; //singleton pacman
     double eatBegin;
     double eatDuration;
-    double BonusDuration;
-    std::map<std::string,double> tempEffect;
     bool isPrey;//définit si le personnage chasse ou est chassé par les autres personnages;
 
 public:
@@ -30,7 +28,6 @@ public:
     //getters
     int getNbLives();
     int getPoints();
-    static Pacman *getInstPac();
     double getEatBegin() const;
     double getEatDuration() const;
     bool getIsPrey() const;
@@ -44,11 +41,9 @@ public:
 
 
     //methods
-    void move(int action, Labyrinth* laby);
+    void move(int action, Labyrinth* laby, glimac::SDLWindowManager &windowManager);
     void die();
-    void update();
     void canEatGhost(glimac::SDLWindowManager &windowManager);
-    void generateBonus(glimac::SDLWindowManager windowmanager);
     ~Pacman();
 
 
