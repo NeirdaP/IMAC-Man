@@ -44,11 +44,10 @@ public:
 
 
     //methods
-    void move(int action, Labyrinth* laby);
+    void move(int action, Labyrinth* laby, glimac::SDLWindowManager windowmanager);
     void die();
     void update();
     void canEatGhost(glimac::SDLWindowManager &windowManager);
-    int keyPressed(glimac::SDLWindowManager windowmanager);
     void generateBonus(glimac::SDLWindowManager windowmanager);
 
 
