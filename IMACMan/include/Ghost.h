@@ -14,6 +14,7 @@
 class Ghost : public Personnage {
 private:
     float regenerationTimer;
+    bool active;
 
 public:
     Ghost();

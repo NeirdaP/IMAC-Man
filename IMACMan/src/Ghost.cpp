@@ -9,7 +9,8 @@
 
 Ghost::Ghost(){
     Personnage();
-    setPosXY(7, 5);
+    setPosXY(7, 7);
+    active = true;
 }
 
 
@@ -90,7 +91,13 @@ void Ghost::move(int action, Labyrinth* laby){
     }
     setPosX((float)positionX);
     setPosY((float)positionY);
-    laby->setOneCaseLaby(positionX, positionY, 5);
+    if(!active){
+        setPosXY(7,7);
+    }
+    else{
+        laby->setOneCaseLaby(positionX, positionY, 5);
+    }
+
     setDirection(action);
 }
 
@@ -100,9 +107,11 @@ void Ghost::eat(Pacman* p){
                 p->die();
             }
         else if(p->getIsPrey()){
+                std::cout << "Vous avez mange un fantôme" << std::endl;
                 p->setPoints(p->getPoints()+100);
-             //delete(this);
-                std::cout << "looser" << std::endl;
+                active = false;
+
+
         }
     }
 }
