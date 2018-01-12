@@ -8,7 +8,9 @@
 #include "../include/Personnage.h"
 #include "../include/Pacman.h"
 #include "../include/Ghost.h"
-#include <Windows.h>
+#if __WINDOWS__
+#include <windows.h>
+#endif
 
 GameApp::GameApp(){
     nbGhosts = 4;
@@ -52,13 +54,13 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
             tabGhosts[i]->moveRandom(labyr);
             tabGhosts[i]->eat(pacman);
         }
-        Sleep(1000);
+//        Sleep(1000);
 
         labyr->printLaby();
 
         std::cout << "temps ecoule: " << windowManager.getTime() << " secondes" << std::endl;
         if(!pacman->getIsAlive() || (int)windowManager.getTime()== board->getTime()){
-            gameIsOn = false;
+//            gameIsOn = false;
         }
     }
 }
@@ -87,7 +89,7 @@ void GameApp::checkKeyPressed(SDL_Event e){
             pacman->dezoom();
         }*/
     } else if (e.type == SDL_QUIT) {
-        //done = true; // Leave the loop after this iteration
+        gameIsOn = false; // Leave the loop after this iteration
     }
     //}
 }

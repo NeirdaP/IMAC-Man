@@ -8,12 +8,15 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Case.hpp"
+#include <glimac/Sphere.hpp>
 
 
 class Labyrinth {
 private:
     int width;
     std::vector<int> tabCases;
+    std::vector<Case> vecCases;
 
 public:
 

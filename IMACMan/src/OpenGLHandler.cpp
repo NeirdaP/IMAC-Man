@@ -34,6 +34,7 @@ int OpenGLHandler::start(const std::string &dirPath){
     std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
 
 #endif
+    return EXIT_SUCCESS;
 }
 
 OpenGLHandler::OpenGLHandler() {

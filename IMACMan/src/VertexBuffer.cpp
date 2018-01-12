@@ -1,4 +1,6 @@
+#include <iostream>
 #include "../include/VertexBuffer.hpp"
+
 
 VertexBuffer::VertexBuffer(const void *data, GLuint size) {
     glGenBuffers(1, &m_RendererID);
@@ -20,4 +22,10 @@ void VertexBuffer::unbind() const {
 
 GLuint VertexBuffer::getM_RendererID() const {
     return m_RendererID;
+}
+
+void VertexBuffer::setBuffer(const void *data, GLuint size) {
+    bind();
+    glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
+    unbind();
 }

@@ -12,6 +12,7 @@
 #include <vector>
 #include <string>
 #include <chrono>
+
 #if __WINDOWS__
 #include <windows.h>
 #endif
@@ -26,10 +27,12 @@
 #include "include/GameApp.h"
 
 #include "include/OpenGLHandler.hpp"
+#include "include/VertexBuffer.hpp"
 
 using namespace glimac;
 
 int main(int argc, char** argv) {
+
     // Initialize SDL and open a window */
     SDLWindowManager windowManager(800, 600, "TITRE");
     SDLWindowManager &refWinMa = windowManager;
@@ -37,17 +40,16 @@ int main(int argc, char** argv) {
     OpenGLHandler glHandler = OpenGLHandler::getInstance();
     glHandler.start((std::string) argv[0]);
 
+    Model model;
 
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
-    //std::cout << "coucou" << std::endl;
+    std::cout << "coucou" << std::endl;
 
     GameApp * app = new GameApp();
     app->appInit();
     app->appLoop(refWinMa);
-
-
 
     return EXIT_SUCCESS;
 }

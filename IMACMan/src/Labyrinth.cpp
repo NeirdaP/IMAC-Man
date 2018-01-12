@@ -8,7 +8,11 @@
 #include "../include/Labyrinth.h"
 
 Labyrinth::Labyrinth(){
-
+    for (int i = 0; i < width; ++i) {
+        for (int j = 0; j < width; ++j) {
+            vecCases.push_back(Case(i,j));
+        }
+    }
 }
 
 //getters
