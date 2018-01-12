@@ -20,8 +20,8 @@ private:
     int width;
     std::vector<int> tabCases;                      //tableau d'entiers représentant cahcune des cases du tableau
     std::vector<Case> vecCases;                     //tableau de Case (non utilisé) destiné à remplacer le vecteur tabCases pour une meilleur gestion des cases du tableau
-    double BonusDuration;
-    int* currentBonus;
+    double BonusDuration;                           //durée d'un bonus temporaire
+    int* currentBonus;                              //tableau contenant les infos sur le bonus actif (voir cpp)
 
 public:
     //getters
@@ -30,6 +30,7 @@ public:
     std::vector<int> getLaby();
     int getLabyCaseValue(int x, int y);
     double getBonusDuration() const;
+    int *randX, *randY;
 
     //setters
     void setWidth(int w);
@@ -39,8 +40,8 @@ public:
 
     //methods
     void printLaby();
-    void updateBonus(glimac::SDLWindowManager windowmanage, Pacman *p);
-    void applyBonus(glimac::SDLWindowManager windowmanage, Pacman *p);
+    void updateBonus(glimac::SDLWindowManager windowmanage, Pacman *p, int *randX, int* randY); //gestion de la création suppression bonus
+    void applyBonus(glimac::SDLWindowManager windowmanage, Pacman *p);  //applique les bonus au pacman
 };
 
 

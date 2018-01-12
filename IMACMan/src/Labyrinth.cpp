@@ -109,18 +109,20 @@ void Labyrinth::applyBonus(glimac::SDLWindowManager windowmanage, Pacman* p) {
     }
 }
 
-void Labyrinth::updateBonus(glimac::SDLWindowManager windowmanage, Pacman *p) {
+void Labyrinth::updateBonus(glimac::SDLWindowManager windowmanage, Pacman *p, int* randX, int* randY) {
     if(windowmanage.getTime()> 1 && (int)windowmanage.getTime() % 50 != 0){
         int randomBonus = std::rand() % 3;
-        int randX, randY;
         currentBonus[0] = randomBonus;
         currentBonus[1] = (int)windowmanage.getTime();
         do{
-            randX = std::rand() % 10;
-            randY = std::rand() % 10;
-        }while(getLabyCaseValue(randX,randY)!= 0);
-        setOneCaseLaby(randX,randY,8);
+            *randX = std::rand() % 15;
+            *randY = std::rand() % 15;
+        }while(getLabyCaseValue(*randX,*randY)!= 0);
+        setOneCaseLaby(*randX,*randY,8);
+    }
 
+    if(windowmanage.getTime() >= currentBonus[1]+(int)BonusDuration && currentBonus[2] == 0){
+        setOneCaseLaby(*randX,*randY,0);
     }
 
     if(currentBonus[2]!= 0 && currentBonus[2] >= (int)BonusDuration){
