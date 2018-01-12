@@ -12,6 +12,7 @@
 
 GameApp::GameApp(){
     nbGhosts = 4;
+    startAgain = true;
 }
 
 void GameApp::appInit(){
@@ -30,7 +31,7 @@ void GameApp::appInit(){
     }
 }
 
-void GameApp::appLoop(glimac::SDLWindowManager windowManager){
+bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
     gameIsOn = true;
     Labyrinth * labyr;
     while(gameIsOn){
@@ -63,6 +64,7 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
             gameIsOn = false;
         }
     }
+    return startAgain;
 }
 
 void GameApp::checkKeyPressed(SDL_Event e){
@@ -82,14 +84,29 @@ void GameApp::checkKeyPressed(SDL_Event e){
         else if (e.key.keysym.sym == SDLK_z){
             pDir = 4;
             return;
+        }
+        else if (e.key.keysym.sym == SDLK_ESCAPE){
+            gameIsOn = false;
+            startAgain = false;
+            atexit(SDL_Quit);
+            return;
         }/*
         else if (e.key.keysym.sym == SDLK_UP){
             pacman->zoom();
         } else if (e.key.keysym.sym == SDLK_DOWN){
             pacman->dezoom();
         }*/
-    } else if (e.type == SDL_QUIT) {
+    } /*else if (e.type == SDL_QUIT) {
         //done = true; // Leave the loop after this iteration
-    }
+    }*/
     //}
+}
+
+void GameApp::appDisallow(){
+    delete board->getLabyrinth();
+    delete board;
+    delete pacman;
+    for(int i = 0 ; i < nbGhosts ; ++i){
+        delete tabGhosts[i];
+    }
 }

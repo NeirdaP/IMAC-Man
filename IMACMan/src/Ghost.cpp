@@ -15,7 +15,7 @@ Ghost::Ghost(){
 
 
 Ghost::~Ghost(){
- std::cout << "fantôme détruit" << std::endl;
+ std::cout << "fantome detruit" << std::endl;
 }
 
 //getters

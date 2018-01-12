@@ -58,20 +58,21 @@ void Pacman::move(int action, Labyrinth* laby){
 
     setPosX((float)positionX);
     setPosY((float)positionY);
-
-    switch(laby->getLabyCaseValue(positionX, positionY)){
-        case 0: points += 10;
+    int currentPos = laby->getLabyCaseValue(positionX, positionY);
+    switch(currentPos){
+        case 0:
+            points += 10;
             break;
-
-        case 4:{
-        points += 50;
-        isPrey = true;
+        case 4:
+            points += 50;
+            isPrey = true;
             //tempEffect.insert("EatTimer",);
-         }break;
-
+            break;
         case 5:
             break;
-    default: break;
+
+        default:
+            break;
     }
 
     if(isPrey){
