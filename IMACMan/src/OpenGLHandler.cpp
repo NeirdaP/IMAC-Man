@@ -52,6 +52,7 @@ OpenGLHandler::OpenGLHandler() {
 OpenGLHandler::~OpenGLHandler() {
 
 }
+//
 /*
 void OpenGLHandler::sendShaderUniformMatrix4f(GLint targetedMatrixID, glm::mat4 matrix) {
     glUniformMatrix4fv(targetedMatrixID, 1, GL_FALSE, glm::value_ptr(matrix));
