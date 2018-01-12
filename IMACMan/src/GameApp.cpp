@@ -23,7 +23,7 @@ GameApp::GameApp(){
 }
 
 void GameApp::musiqueApp(){
-    /*if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
     {
         std::cout << Mix_GetError() << std::endl;
     }
@@ -38,24 +38,19 @@ void GameApp::musiqueApp(){
 
     Mix_FreeChunk(chunk);
 
-    Mix_CloseAudio();*/
+    Mix_CloseAudio();
 }
 
 void GameApp::appInit(){
     musiqueApp();
 
-    board = Board::getInstBoard(); //singleton board
+    board = Board::getInstBoard();              //singleton board
     board->getLabyrinth()->printLaby();
 
-    int pDir = 0;
-
-    //create Pacman
-    //pacman = Pacman::getInstPac(); //singleton pacman
     pacman = new Pacman();
 
-    //std::vector<Ghost*> tabGhosts;
     for(int i = 0 ; i < nbGhosts ; i++){
-        Ghost * ghost = new Ghost();
+        Ghost * ghost = new Ghost();            //rempli le tableau de Ghost
         tabGhosts.push_back(ghost);
     }
 
@@ -80,17 +75,15 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager) {
         labyr = board->getLabyrinth();
         labyr->printLaby();
 
-        //std::cout << "ok"  << std::endl;
         SDL_Event e;
         while (windowManager.pollEvent(e)) {
-            checkKeyPressed(e);
+            checkKeyPressed(e);                             //fonction qui vérifie si une touche du clavier est appuyée
         }
-        GameApp::appRegenerateghost(windowManager);
-        pacman->canEatGhost(windowManager);
+        appRegenerateghost(windowManager);                  //fonction qui régénère les fantômes lorsqu'ils sont mangés par pacman
+        pacman->canEatGhost(windowManager);                 //fonction
         labyr->updateBonus(windowManager, pacman);
         pacman->move(pDir, labyr, windowManager);
 
-        //int gDir;
         for (int i = 0; i < nbGhosts; i++) {
             //gDir = tabGhosts[i]->getDirection();
             tabGhosts[i]->moveRandom(labyr);
@@ -104,7 +97,7 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager) {
 
             if (!(pacman->getIsAlive()) || (int) windowManager.getTime() == board->getTime()) {
                 std::cout << "OK false" << std::endl;
-//            gameIsOn = false;
+                gameIsOn = false;
             }
         }
         return startAgain;

@@ -17,15 +17,10 @@ Labyrinth::Labyrinth(){
     currentBonus = new int[4];
     for(int k = 0; k < 3; k++){
         currentBonus[k] = 0;
-        // k = 0 //type of bonus
-        // k = 1 //time when created
-        // k = 2 //time when eaten
-
     }
 }
 
 //getters
-
 int Labyrinth::getWidth(){
     return width;
 }
@@ -87,7 +82,6 @@ void Labyrinth::printLaby(){
 
                 default: std::cout << tabCases[j + width * i] << " ";
             }
-
         }
         std::cout << std::endl;
     }

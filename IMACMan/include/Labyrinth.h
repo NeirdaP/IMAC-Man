@@ -18,17 +18,12 @@
 class Labyrinth {
 private:
     int width;
-    std::vector<int> tabCases;
-    std::vector<Case> vecCases;
+    std::vector<int> tabCases;                      //tableau d'entiers représentant cahcune des cases du tableau
+    std::vector<Case> vecCases;                     //tableau de Case (non utilisé) destiné à remplacer le vecteur tabCases pour une meilleur gestion des cases du tableau
     double BonusDuration;
     int* currentBonus;
 
-
-
-
-
 public:
-
     //getters
     Labyrinth();
     int getWidth();
