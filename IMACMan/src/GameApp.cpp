@@ -44,7 +44,7 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
             checkKeyPressed(e);
         }
         Labyrinth * labyr = board->getLabyrinth();
-        pacman->move(pDir, labyr);
+        pacman->move(pDir, labyr,windowManager);
 
         //int gDir;
         for(int i = 0 ; i < nbGhosts ; i++){
