@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
 
     GameApp * app = new GameApp();
     app->appInit();
-    app->appLoop(windowManager);
+    app->appLoop(refWinMa);
 
 
 

@@ -44,7 +44,7 @@ public:
 
 
     //methods
-    void move(int action, Labyrinth* laby, glimac::SDLWindowManager windowmanager);
+    void move(int action, Labyrinth* laby);
     void die();
     void update();
     void canEatGhost(glimac::SDLWindowManager &windowManager);
