@@ -65,19 +65,19 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
 
 void GameApp::checkKeyPressed(SDL_Event e){
     if (e.type == SDL_KEYDOWN){
-        if (e.key.keysym.sym == SDLK_z){
+        if (e.key.keysym.sym == SDLK_q){
             pDir = 1;
             return;
         }
-        else if (e.key.keysym.sym == SDLK_d){
+        else if (e.key.keysym.sym == SDLK_s){
             pDir = 2;
             return;
         }
-        else if (e.key.keysym.sym == SDLK_s){
+        else if (e.key.keysym.sym == SDLK_d){
             pDir = 3;
             return;
         }
-        else if (e.key.keysym.sym == SDLK_q){
+        else if (e.key.keysym.sym == SDLK_z){
             pDir = 4;
             return;
         }/*
