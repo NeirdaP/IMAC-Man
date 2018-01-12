@@ -12,7 +12,7 @@
 #include <vector>
 #include <string>
 #include <chrono>
-#include <string>
+
 #if __WINDOWS__
 #include <windows.h>
 #endif
@@ -29,6 +29,8 @@
 #include "include/GameApp.h"
 
 #include "include/OpenGLHandler.hpp"
+#include "include/VertexBuffer.hpp"
+#include "include/Renderer.hpp"
 
 using namespace glimac;
 
@@ -61,6 +63,10 @@ int main(int argc, char** argv) {
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
+
+    GameApp * app = new GameApp();
+    app->appInit();
+    app->appLoop(refWinMa);
     //std::cout << "coucou" << std::endl;
     bool startAgain = true;
     while(startAgain){

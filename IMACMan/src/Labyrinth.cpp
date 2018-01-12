@@ -8,7 +8,11 @@
 #include "../include/Labyrinth.h"
 
 Labyrinth::Labyrinth(){
-
+    for (int i = 0; i < width; ++i) {
+        for (int j = 0; j < width; ++j) {
+            vecCases.push_back(Case(i,j));
+        }
+    }
 }
 
 //getters
@@ -58,6 +62,12 @@ void Labyrinth::printLaby(){
                     break;
 
                 case 5: std::cout << "X ";
+                    break;
+
+                case 17: std::cout << "| ";
+                    break;
+
+                case 18: std::cout << "| ";
                     break;
 
                 default: std::cout << tabCases[j + width * i] << " ";

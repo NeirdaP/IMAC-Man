@@ -1,12 +1,15 @@
 #ifndef IMACGL_VERTEXBUFFER_HPP
 #define IMACGL_VERTEXBUFFER_HPP
-#include "Renderer.hpp"
+
+
+#include <GL/glew.h>
 
 class VertexBuffer {
 private:
     GLuint m_RendererID;
 
 public:
+    VertexBuffer(){};
     VertexBuffer(const void* data, GLuint size);
     ~VertexBuffer();
 
@@ -14,6 +17,8 @@ public:
     void unbind() const;
 
     GLuint getM_RendererID() const;
+
+    void setBuffer(const void* data, GLuint size);
 };
 
 

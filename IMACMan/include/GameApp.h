@@ -13,6 +13,8 @@
 #include "../include/Personnage.h"
 #include "../include/Pacman.h"
 #include "../include/Ghost.h"
+#include "Camera.hpp"
+#include "Renderer.hpp"
 
 
 class GameApp {
@@ -24,6 +26,9 @@ private:
     int pDir;
     bool gameIsOn;
     bool startAgain;
+
+    Camera* appCamera;
+    Renderer* appRenderer;
 
 public:
     GameApp();

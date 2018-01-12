@@ -11,7 +11,9 @@
 #include "../include/Personnage.h"
 #include "../include/Pacman.h"
 #include "../include/Ghost.h"
-#include <Windows.h>
+#if __WINDOWS__
+#include <windows.h>
+#endif
 
 GameApp::GameApp(){
     nbGhosts = 4;
@@ -33,6 +35,15 @@ void GameApp::appInit(){
         Ghost * ghost = new Ghost();
         tabGhosts.push_back(ghost);
     }
+
+    appCamera = new Camera();
+
+    appRenderer = new Renderer(appCamera);
+
+    Model* model = new Model();
+
+    appRenderer->addModel(model);
+    appRenderer->renderModels();
 }
 
 bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
@@ -66,8 +77,8 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
         Sleep(1000);
 
         if(!(pacman->getIsAlive()) || (int)windowManager.getTime()== board->getTime()){
-            std::cout << "Game over" << std::endl;
-            gameIsOn = false;
+            std::cout << "OK false" << std::endl;
+//            gameIsOn = false;
         }
     }
     return startAgain;
@@ -102,9 +113,9 @@ void GameApp::checkKeyPressed(SDL_Event e){
         } else if (e.key.keysym.sym == SDLK_DOWN){
             pacman->dezoom();
         }*/
-    } /*else if (e.type == SDL_QUIT) {
-        //done = true; // Leave the loop after this iteration
-    }*/
+    } else if (e.type == SDL_QUIT) {
+        gameIsOn = false; // Leave the loop after this iteration
+    }
     //}
 }
 

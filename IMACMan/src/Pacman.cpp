@@ -68,7 +68,19 @@ void Pacman::move(int action, Labyrinth* laby){
             isPrey = true;
             //tempEffect.insert("EatTimer",);
             break;
-        case 5:
+        case 17:
+            //va du portail droit au portail haut
+            setPosX(1);
+            setPosY(5);
+            setDirection(2);
+            laby->setOneCaseLaby(positionX, positionY, 17);
+            break;
+        case 18:
+            //va du portail haut au portail droit
+            setPosX(5);
+            setPosY(1);
+            setDirection(3);
+            laby->setOneCaseLaby(positionX, positionY, 18);
             break;
 
         default:
