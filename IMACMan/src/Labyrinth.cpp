@@ -110,6 +110,7 @@ void Labyrinth::applyBonus(glimac::SDLWindowManager windowmanage, Pacman* p) {
 }
 
 void Labyrinth::updateBonus(glimac::SDLWindowManager windowmanage, Pacman *p, int* randX, int* randY) {
+    //création d'un bonus
     if(windowmanage.getTime()> 1 && (int)windowmanage.getTime() % 50 != 0){
         int randomBonus = std::rand() % 3;
         currentBonus[0] = randomBonus;
@@ -121,10 +122,11 @@ void Labyrinth::updateBonus(glimac::SDLWindowManager windowmanage, Pacman *p, in
         setOneCaseLaby(*randX,*randY,8);
     }
 
+    //si le bonus n'as pas été mangé pendant le temps imparti
     if(windowmanage.getTime() >= currentBonus[1]+(int)BonusDuration && currentBonus[2] == 0){
         setOneCaseLaby(*randX,*randY,0);
     }
-
+    //désactive un bonus temporaire
     if(currentBonus[2]!= 0 && currentBonus[2] >= (int)BonusDuration){
         if (currentBonus[0]== 3){
             p->setSpeed(p->getSpeed() / 2);
