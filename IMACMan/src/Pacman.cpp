@@ -79,7 +79,9 @@ void Pacman::move(int action, Labyrinth* laby){
 }
 void Pacman::die(){
     if(nbLives > 0){
+        std::cout << "OK" << std::endl;
         nbLives--;
+        std::cout << "OK" << std::endl;
         std::cout << "Lives : " << nbLives << std::endl;
         setPosXY(1, 1);
     }
