@@ -21,7 +21,7 @@ Pacman::Pacman(){
     eatDuration = 10;
 }
 
-void Pacman::move(int action, Labyrinth* laby){
+void Pacman::move(int action, Labyrinth* laby, glimac::SDLWindowManager windowmanager){
     int positionX = (int)getPosX();
     int positionY = (int)getPosY();
     laby->setOneCaseLaby(positionX, positionY, 2);
