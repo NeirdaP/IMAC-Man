@@ -1,7 +1,3 @@
-//
-// Created by Thibault on 02/01/2018.
-//
-
 #ifndef IMACGL_BOARD_H
 #define IMACGL_BOARD_H
 
@@ -16,15 +12,14 @@ class Board {
 private:
     int width;
     Labyrinth labyrinth;
-    int level;
-    int time;
+    int level;                          //dans le cas ou on avait plusieurs niveaus de difficultés
+    int time;                           //durée du jeu (ne change pas au cours du jeu)
     Board();
     Board(int w, int ntime);
-    static Board * board; // singleton
+    static Board * board;               // singleton
 
 
 public:
-
     void loadElements();
 
     //getters
@@ -38,7 +33,7 @@ public:
     void setLabyrinth(Labyrinth* l);
     void setTime(int time);
 
-    //methods
+    //display
     void displayScore(Pacman * p);
     void displayLives(Pacman *p);
 

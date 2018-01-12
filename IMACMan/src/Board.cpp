@@ -9,20 +9,19 @@
 #include "../include/Pacman.h"
 #include "../include/Ghost.h"
 
-Board* Board::board = nullptr;
+Board* Board::board = nullptr;          //singleton
 
 Board::Board(){};
 
 Board::Board(int w, int ntime){
-    this->width = w;
+    width = w;
     loadElements();
     time = ntime;
 
 };
 
-
+//fonction qui crée et initalise le labyrinthe
 void Board::loadElements(){
-
     //create labyrinth
     Labyrinth *laby = new Labyrinth();
     //0 : chemin avec pacgomme / 1 : mur / 2 : chemin sans pacgomme 4 : super pac gomme  5 : fantôme 9 : pacman
@@ -31,10 +30,7 @@ void Board::loadElements(){
     laby->setLaby(l);
     laby->setWidth(width);
     setLabyrinth(laby);
-
-
 }
-
 
 //getters
 int Board::getWidth(){
@@ -49,12 +45,12 @@ int Board::getTime() const {
     return time;
 }
 
- Board* Board::getInstBoard(){
-    if (!board)
+Board* Board::getInstBoard(){
+    if (!board){
         board = new Board(9,500);
+    }
     return board;
 }
-
 
 //setters
 void Board::setWidth(int w){
@@ -70,13 +66,13 @@ void Board::setTime(int time) {
 }
 
 
-//methods
+//display
 void Board::displayScore(Pacman *p) {
-    std::cout << "Score :" << p->getPoints() << std::endl;
+    std::cout << "Score : " << p->getPoints() << std::endl;
 }
 
 void Board::displayLives(Pacman *p) {
-    std::cout << "Lives :" << p->getNbLives() << std::endl << std::endl;
+    std::cout << "Lives : " << p->getNbLives() << std::endl << std::endl;
 }
 
 
