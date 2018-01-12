@@ -51,6 +51,7 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
         while(windowManager.pollEvent(e)){
             checkKeyPressed(e);
         }
+        GameApp::appRegenerateghost(windowManager);
         pacman->canEatGhost(windowManager);
         pacman->move(pDir, labyr);
 
