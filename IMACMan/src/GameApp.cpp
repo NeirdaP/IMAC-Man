@@ -80,29 +80,30 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager) {
             checkKeyPressed(e);                             //fonction qui vérifie si une touche du clavier est appuyée
         }
         appRegenerateghost(windowManager);                  //fonction qui régénère les fantômes lorsqu'ils sont mangés par pacman
-        pacman->canEatGhost(windowManager);                 //fonction
+        pacman->canEatGhost(windowManager);                 //fonction qui permet a pacman de manger les fantomes s'il a un bonus
         labyr->updateBonus(windowManager, pacman);
-        pacman->move(pDir, labyr, windowManager);
+        pacman->move(pDir, labyr, windowManager);           //fonction qui fait bouger pacman
 
         for (int i = 0; i < nbGhosts; i++) {
             //gDir = tabGhosts[i]->getDirection();
-            tabGhosts[i]->moveRandom(labyr);
+            tabGhosts[i]->moveRandom(labyr);                //fonction qui fait bouger les fantomes
             tabGhosts[i]->eat(pacman, windowManager);
 
             //Pause 1 seconde windows et mac
             double timePause = windowManager.getTime();
-            do {
-            } while (windowManager.getTime() <= timePause + 1);
+            do {                                            //fait une pause (compatible windows et mac
+            }while(windowManager.getTime() <= timePause + 1);
 
 
             if (!(pacman->getIsAlive()) || (int) windowManager.getTime() == board->getTime()) {
-                std::cout << "OK false" << std::endl;
                 gameIsOn = false;
             }
         }
         return startAgain;
     }
 }
+
+//fonction qui vérirife les différentes touches du clavier qui sont associées a des actions
 void GameApp::checkKeyPressed(SDL_Event e){
     if (e.type == SDL_KEYDOWN){
         if (e.key.keysym.sym == SDLK_q){
@@ -131,16 +132,10 @@ void GameApp::checkKeyPressed(SDL_Event e){
             startAgain = false;
             atexit(SDL_Quit);
             return;
-        }/*
-        else if (e.key.keysym.sym == SDLK_UP){
-            pacman->zoom();
-        } else if (e.key.keysym.sym == SDLK_DOWN){
-            pacman->dezoom();
-        }*/
+        }
     } else if (e.type == SDL_QUIT) {
-        gameIsOn = false; // Leave the loop after this iteration
+        gameIsOn = false;                           // Leave the loop after this iteration
     }
-    //}
 }
 
 void GameApp::appDisallow(){
@@ -151,6 +146,7 @@ void GameApp::appDisallow(){
     tabGhosts.clear();
 }
 
+//regenre les fantomes lorsqu'ils se font manger par pacman
 void GameApp::appRegenerateghost(glimac::SDLWindowManager windowManager) {
     for(int i = 0 ; i < nbGhosts ; ++i){
         if(!tabGhosts[i]->isActive()){
