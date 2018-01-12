@@ -9,7 +9,7 @@
 
 Ghost::Ghost(){
     Personnage();
-    setPosXY(7, 7);
+    setPosXY(7, 5);
 }
 
 
@@ -99,10 +99,10 @@ void Ghost::eat(Pacman* p){
             if(!p->getIsPrey()) {
                 p->die();
             }
-        else{
+        else if(p->getIsPrey()){
                 p->setPoints(p->getPoints()+100);
-             delete(this);
-
+             //delete(this);
+                std::cout << "looser" << std::endl;
         }
     }
 }

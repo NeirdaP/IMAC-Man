@@ -32,6 +32,7 @@ void GameApp::appInit(){
 
 void GameApp::appLoop(glimac::SDLWindowManager windowManager){
     gameIsOn = true;
+    Labyrinth * labyr;
     while(gameIsOn){
 
         board->displayScore(pacman);
@@ -43,7 +44,8 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
         while(windowManager.pollEvent(e)){
             checkKeyPressed(e);
         }
-        Labyrinth * labyr = board->getLabyrinth();
+        labyr = board->getLabyrinth();
+        labyr->printLaby();
         pacman->move(pDir, labyr);
 
         //int gDir;
@@ -54,10 +56,10 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
         }
         Sleep(1000);
 
-        labyr->printLaby();
 
-        std::cout << "temps ecoule: " << windowManager.getTime() << " secondes" << std::endl;
-        if(!pacman->getIsAlive() || (int)windowManager.getTime()== board->getTime()){
+
+        if(!(pacman->getIsAlive()) || (int)windowManager.getTime()== board->getTime()){
+            std::cout << "OK false" << std::endl;
             gameIsOn = false;
         }
     }
