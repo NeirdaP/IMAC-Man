@@ -8,7 +8,7 @@
 #include "../include/Pacman.h"
 
 
-Pacman * Pacman::pacman = nullptr ;
+//Pacman * Pacman::pacman = nullptr ;
 
 Pacman::Pacman(){
     Personnage();
@@ -68,27 +68,47 @@ void Pacman::move(int action, Labyrinth* laby){
             isPrey = true;
             //tempEffect.insert("EatTimer",);
             break;
-        case 5:
+        case 17:
+            //va du portail droit au portail haut
+            setPosX(1);
+            setPosY(5);
+            setDirection(2);
+            laby->setOneCaseLaby(positionX, positionY, 17);
+            break;
+        case 18:
+            //va du portail haut au portail droit
+            setPosX(5);
+            setPosY(1);
+            setDirection(3);
+            laby->setOneCaseLaby(positionX, positionY, 18);
             break;
 
         default:
             break;
     }
-    laby->setOneCaseLaby(positionX, positionY, 9);
+
+    if(isPrey){
+        laby->setOneCaseLaby(positionX, positionY, 6);
+    }
+    else{
+        laby->setOneCaseLaby(positionX, positionY, 9);
+    }
+
     setDirection(action);
 }
 void Pacman::die(){
-    if(nbLives > 0){
-        std::cout << "OK" << std::endl;
-        nbLives--;
-        std::cout << "OK" << std::endl;
-        std::cout << "Lives : " << nbLives << std::endl;
-        setPosXY(1, 1);
-    }
-    else{
+    std::cout <<"die"<< std::endl;
+    if(nbLives == 1){
         setIsAlive(false);
         std::cout << "----------- GAME OVER -----------" << std::endl;
     }
+
+    if(nbLives > 1){
+        nbLives--;
+        std::cout << "You've lost 1 life !"<< std::endl;
+        setPosXY(1, 1);
+    }
+
 }
 
 //getters
@@ -100,12 +120,12 @@ int Pacman::getPoints(){
     return points;
 }
 
-Pacman *Pacman::getInstPac() {
+/*Pacman *Pacman::getInstPac() {
     if(!pacman){
         pacman = new Pacman();
     }
     return pacman;
-}
+}*/
 
 double Pacman::getEatBegin() const {
     return eatBegin;
@@ -147,14 +167,14 @@ void Pacman::setEatBegin(double eatBegin) {
 
 void Pacman::canEatGhost(glimac::SDLWindowManager& windowManager) {
 
-  /*  if(isPrey && !eatBegin){
+    if(isPrey && !eatBegin){
         eatBegin = windowManager.getTime();
     }
     if(windowManager.getTime() >= eatBegin +eatDuration){
         eatBegin = 0;
         isPrey = false;
     }
-    */
+
 }
 
 

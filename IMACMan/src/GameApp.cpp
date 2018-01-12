@@ -2,6 +2,9 @@
 // Created by Thibault on 11/01/2018.
 //
 
+#include <iostream>
+#include <vector>
+
 #include "../include/GameApp.h"
 #include "../include/Board.h"
 #include "../include/Labyrinth.h"
@@ -24,7 +27,8 @@ void GameApp::appInit(){
     int pDir = 0;
 
     //create Pacman
-    pacman = Pacman::getInstPac(); //singleton pacman
+    //pacman = Pacman::getInstPac(); //singleton pacman
+    pacman = new Pacman();
 
     //std::vector<Ghost*> tabGhosts;
     for(int i = 0 ; i < nbGhosts ; i++){
@@ -50,25 +54,27 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
         board->displayScore(pacman);
         board->displayLives(pacman);
         std::cout << "Time :" << (int)(board->getTime() - windowManager.getTime()) << std::endl;
+        labyr = board->getLabyrinth();
+        labyr->printLaby();
 
         //std::cout << "ok"  << std::endl;
         SDL_Event e;
         while(windowManager.pollEvent(e)){
             checkKeyPressed(e);
         }
-        labyr = board->getLabyrinth();
-        labyr->printLaby();
+        GameApp::appRegenerateghost(windowManager);
+        pacman->canEatGhost(windowManager);
         pacman->move(pDir, labyr);
 
         //int gDir;
         for(int i = 0 ; i < nbGhosts ; i++){
             //gDir = tabGhosts[i]->getDirection();
             tabGhosts[i]->moveRandom(labyr);
-            tabGhosts[i]->eat(pacman);
+            tabGhosts[i]->eat(pacman,windowManager);
+            std::cout <<"pac fant " << i << "pac pos x"<<tabGhosts[i]->getPosX() <<"pac posy" <<tabGhosts[i]->getPosY() << std::endl << std::endl;
         }
-        //Sleep(100);
-
-
+        std::cout <<"pac posx" <<pacman->getPosX() <<"pac posy" <<pacman->getPosY() << std::endl << std::endl;
+        Sleep(1000);
 
         if(!(pacman->getIsAlive()) || (int)windowManager.getTime()== board->getTime()){
             std::cout << "OK false" << std::endl;
@@ -114,10 +120,19 @@ void GameApp::checkKeyPressed(SDL_Event e){
 }
 
 void GameApp::appDisallow(){
-    delete board->getLabyrinth();
-    delete board;
-    delete pacman;
+    pacman = nullptr;
     for(int i = 0 ; i < nbGhosts ; ++i){
-        delete tabGhosts[i];
+        tabGhosts.pop_back();
+    }
+    tabGhosts.clear();
+}
+
+void GameApp::appRegenerateghost(glimac::SDLWindowManager windowManager) {
+    for(int i = 0 ; i < nbGhosts ; ++i){
+        if(!tabGhosts[i]->isActive()){
+            if(windowManager.getTime()>= tabGhosts[i]->getPosX()+ tabGhosts[i]->getDeactivatedTime()){
+                tabGhosts[i]->setActive(true);
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@
 
 Personnage::Personnage(){
     isAlive = true;
+    speed = 1;
 }
 
 void Personnage::move(int action, Labyrinth* laby){

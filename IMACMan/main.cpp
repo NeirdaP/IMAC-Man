@@ -33,13 +33,13 @@
 using namespace glimac;
 
 int main(int argc, char** argv) {
-
     // Initialize SDL and open a window */
     SDLWindowManager windowManager(800, 600, "TITRE");
     SDLWindowManager &refWinMa = windowManager;
 
     OpenGLHandler glHandler = OpenGLHandler::getInstance();
     glHandler.start((std::string) argv[0]);
+
 
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
@@ -48,6 +48,19 @@ int main(int argc, char** argv) {
     GameApp * app = new GameApp();
     app->appInit();
     app->appLoop(refWinMa);
+    //std::cout << "coucou" << std::endl;
+    bool startAgain = true;
+    while(startAgain){
+        GameApp * app = new GameApp();
+        app->appInit();
+        startAgain = app->appLoop(refWinMa);
+
+        app->appDisallow();
+        delete app;
+    }
+
+
+
 
     return EXIT_SUCCESS;
 }
