@@ -74,21 +74,29 @@ void Pacman::move(int action, Labyrinth* laby){
         default:
             break;
     }
-    laby->setOneCaseLaby(positionX, positionY, 9);
+
+    if(isPrey){
+        laby->setOneCaseLaby(positionX, positionY, 6);
+    }
+    else{
+        laby->setOneCaseLaby(positionX, positionY, 9);
+    }
+
     setDirection(action);
 }
 void Pacman::die(){
-    if(nbLives > 0){
-        std::cout << "OK" << std::endl;
-        nbLives--;
-        std::cout << "OK" << std::endl;
-        std::cout << "Lives : " << nbLives << std::endl;
-        setPosXY(1, 1);
-    }
-    else{
+    std::cout <<"die"<< std::endl;
+    if(nbLives == 1){
         setIsAlive(false);
         std::cout << "----------- GAME OVER -----------" << std::endl;
     }
+
+    if(nbLives > 1){
+        nbLives--;
+        std::cout << "You've lost 1 life !"<< std::endl;
+        setPosXY(1, 1);
+    }
+
 }
 
 //getters

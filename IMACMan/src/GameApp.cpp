@@ -43,14 +43,14 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
         board->displayScore(pacman);
         board->displayLives(pacman);
         std::cout << "Time :" << (int)(board->getTime() - windowManager.getTime()) << std::endl;
+        labyr = board->getLabyrinth();
+        labyr->printLaby();
 
         //std::cout << "ok"  << std::endl;
         SDL_Event e;
         while(windowManager.pollEvent(e)){
             checkKeyPressed(e);
         }
-        labyr = board->getLabyrinth();
-        labyr->printLaby();
         pacman->move(pDir, labyr);
 
         //int gDir;
@@ -58,13 +58,13 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
             //gDir = tabGhosts[i]->getDirection();
             tabGhosts[i]->moveRandom(labyr);
             tabGhosts[i]->eat(pacman);
+            std::cout <<"pac fant " << i <<tabGhosts[i]->getPosX() <<"pac posy" <<tabGhosts[i]->getPosY() << std::endl << std::endl;
         }
-        //Sleep(100);
-
-
+        std::cout <<"pac posx" <<pacman->getPosX() <<"pac posy" <<pacman->getPosY() << std::endl << std::endl;
+        Sleep(1000);
 
         if(!(pacman->getIsAlive()) || (int)windowManager.getTime()== board->getTime()){
-            std::cout << "OK false" << std::endl;
+            std::cout << "Game over" << std::endl;
             gameIsOn = false;
         }
     }
