@@ -41,7 +41,7 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
         //std::cout << "ok"  << std::endl;
         SDL_Event e;
         while(windowManager.pollEvent(e)){
-            pDir = checkKeyPressed(e);
+            checkKeyPressed(e);
         }
         Labyrinth * labyr = board->getLabyrinth();
         pacman->move(pDir, labyr);
@@ -63,19 +63,23 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
     }
 }
 
-int GameApp::checkKeyPressed(SDL_Event e){
+void GameApp::checkKeyPressed(SDL_Event e){
     if (e.type == SDL_KEYDOWN){
         if (e.key.keysym.sym == SDLK_z){
-            return 1;
+            pDir = 1;
+            return;
         }
         else if (e.key.keysym.sym == SDLK_d){
-            return 2;
+            pDir = 2;
+            return;
         }
         else if (e.key.keysym.sym == SDLK_s){
-            return 3;
+            pDir = 3;
+            return;
         }
         else if (e.key.keysym.sym == SDLK_q){
-            return 4;
+            pDir = 4;
+            return;
         }/*
         else if (e.key.keysym.sym == SDLK_UP){
             pacman->zoom();
