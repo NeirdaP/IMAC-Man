@@ -21,9 +21,10 @@ private:
 
 public:
     Personnage();
-    virtual void move(int action, Labyrinth* laby);
-    virtual void eat();
-    virtual void die();
+    //fonctions virtuelles redéfinies dans les enfants
+    virtual void move(int action, Labyrinth* laby){}
+    virtual void eat(){}
+    virtual void die(){}
 
     //getters
     bool getIsAlive();

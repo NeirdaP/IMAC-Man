@@ -32,6 +32,7 @@ private:
 
 public:
     GameApp();
+    void musiqueApp();
     void appInit();
     bool appLoop(glimac::SDLWindowManager windowManager);
     void checkKeyPressed(SDL_Event e);
