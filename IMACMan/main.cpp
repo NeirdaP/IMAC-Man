@@ -12,9 +12,12 @@
 #include <vector>
 #include <string>
 #include <chrono>
+#include <string>
 #if __WINDOWS__
 #include <windows.h>
 #endif
+
+#include <SDL_mixer.h>
 
 #include <unistd.h>
 
@@ -36,6 +39,23 @@ int main(int argc, char** argv) {
 
     OpenGLHandler glHandler = OpenGLHandler::getInstance();
     glHandler.start((std::string) argv[0]);
+
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
+    {
+        std::cout << Mix_GetError() << std::endl;
+    }
+
+    Mix_AllocateChannels(16);
+    std::string path ="C:\\Users\\Admin\\CLionProjects\\IMAC-Man\\IMACMan\\playMUSIC\\music.wav";
+    Mix_Chunk* chunk = Mix_LoadWAV(path.c_str()); //transform std::string into char* so SDL_Mixer "understand" the path
+    if(chunk == NULL){
+        std::cout << "Error on loading : " << Mix_GetError() << std::endl;
+        std::cout << "Note's path is : " << path << std::endl;
+    }
+
+    Mix_FreeChunk(chunk);
+
+    Mix_CloseAudio();
 
 
     /*********************************
