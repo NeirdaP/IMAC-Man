@@ -1,5 +1,6 @@
 
 #include <glimac/Sphere.hpp>
+#include <iostream>
 #include "../include/Model.hpp"
 
 void Model::render(glm::mat4 viewMatrix) {
@@ -11,8 +12,6 @@ void Model::render(glm::mat4 viewMatrix) {
     vao.bind();
     drawVertices();
     vao.unbind();
-
-
 }
 
 void Model::drawVertices() {

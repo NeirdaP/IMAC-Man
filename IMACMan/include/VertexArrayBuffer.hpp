@@ -1,6 +1,5 @@
 #ifndef IMACGL_VERTEXARRAYBUFFER_HPP
 #define IMACGL_VERTEXARRAYBUFFER_HPP
-#include "Renderer.hpp"
 #include "glimac/common.hpp"
 
 class VertexArrayBuffer {

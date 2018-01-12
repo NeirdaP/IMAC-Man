@@ -13,9 +13,19 @@ public:
     }
 
     ~OpenGLHandler();
+
+    glimac::Program *getProgram() const;
+
+    void setProgram(glimac::Program *program);
 private:
     OpenGLHandler();
+    void sendShaderUniformMatrix4f(GLint targetedMatrixID, glm::mat4 matrix);
+    void sendShaderUniform3f(GLint targetedVectorID, glm::vec3 vec);
+    void sendShaderUniform1f(GLint targetedFloatID, float value);
 
+    GLint getShaderUniformLocation(std::string);
+
+    glimac::Program* program;
 };
 
 

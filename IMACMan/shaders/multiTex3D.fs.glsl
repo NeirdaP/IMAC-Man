@@ -12,7 +12,7 @@ out vec3 fFragColor;
 void main(){
     vec4 texture1 = texture(uTex, vFragTexCoords);
     vec4 texture2 = texture(uTex2, vFragTexCoords);
-    fFragColor = (texture1 + texture2).xyz;
-//    fFragColor = vec3 (1,1,1);
+//    fFragColor = (texture1 + texture2).xyz;
+    fFragColor = vec3 (0.7,0.7,0.7);
 
 }

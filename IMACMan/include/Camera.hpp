@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include <SDL/SDL.h>
-#include "../../../Archive/opengl-basic-examples-master/GLImac-Template/glimac/include/glimac/glm.hpp"
+#include <SDL2/SDL.h>
+#include <glimac/glm.hpp>
 
 
 

@@ -31,6 +31,15 @@ void GameApp::appInit(){
         Ghost * ghost = new Ghost();
         tabGhosts.push_back(ghost);
     }
+
+    appCamera = new Camera();
+
+    appRenderer = new Renderer(appCamera);
+
+    Model* model = new Model();
+
+    appRenderer->addModel(model);
+    appRenderer->renderModels();
 }
 
 bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
@@ -63,7 +72,7 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
 
         if(!(pacman->getIsAlive()) || (int)windowManager.getTime()== board->getTime()){
             std::cout << "OK false" << std::endl;
-            gameIsOn = false;
+//            gameIsOn = false;
         }
     }
     return startAgain;

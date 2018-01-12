@@ -1,6 +1,8 @@
 #ifndef IMACGL_VERTEXBUFFER_HPP
 #define IMACGL_VERTEXBUFFER_HPP
-#include "Renderer.hpp"
+
+
+#include <GL/glew.h>
 
 class VertexBuffer {
 private:

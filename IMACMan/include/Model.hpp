@@ -7,7 +7,7 @@
 #include "glimac/common.hpp"
 #include "Sphere.hpp"
 
-class Model {
+class Model{
 private:
     VertexBuffer vbo;
     VertexArrayBuffer vao;
