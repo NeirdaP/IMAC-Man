@@ -38,8 +38,11 @@ int OpenGLHandler::start(const std::string &dirPath){
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
     std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
     glEnable(GL_DEPTH_TEST);
-#endif
+
+
+
     return EXIT_SUCCESS;
+#endif
 }
 
 OpenGLHandler::OpenGLHandler() {
@@ -49,7 +52,7 @@ OpenGLHandler::OpenGLHandler() {
 OpenGLHandler::~OpenGLHandler() {
 
 }
-
+/*
 void OpenGLHandler::sendShaderUniformMatrix4f(GLint targetedMatrixID, glm::mat4 matrix) {
     glUniformMatrix4fv(targetedMatrixID, 1, GL_FALSE, glm::value_ptr(matrix));
 }
@@ -65,7 +68,7 @@ void sendShaderUniform1f(GLint targetedFloatID, float value) {
 GLint OpenGLHandler::getShaderUniformLocation(std::string name) {
     return glGetUniformLocation(getProgram()->getGLId(), name.c_str());
 }
-
+*/
 glimac::Program *OpenGLHandler::getProgram() const {
     return program;
 }

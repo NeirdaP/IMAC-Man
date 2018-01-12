@@ -22,6 +22,9 @@ private:
     double eatBegin; //temps à partir duquel pacman a mangé un super pacgom
     double eatDuration; //temps que pacman peut manger fantôme
     bool isPrey;//définit si le personnage chasse ou est chassé par les autres personnages;
+    int* currentBonus; //tableau contenant les infos sur le bonus actif (voir cpp)
+    int randX,randY;
+    double BonusDuration;
 
 public:
     Pacman();
@@ -46,7 +49,8 @@ public:
     void die(); // gestion du nombre de vie
     void canEatGhost(glimac::SDLWindowManager &windowManager); // met à jour si le pacman peut toujours manger des fantômes
     ~Pacman();
-
+    void updateBonus(glimac::SDLWindowManager windowmanage, Labyrinth* laby); //gestion de la création suppression bonus
+    void applyBonus(glimac::SDLWindowManager windowmanage, Labyrinth* laby);
 
 };
 

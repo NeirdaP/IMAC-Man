@@ -19,6 +19,11 @@ Pacman::Pacman(){
     setDirection(0);
     eatBegin = 0;
     eatDuration = 10;
+    BonusDuration = 15;
+    currentBonus = new int[4];
+    for(int k = 0; k < 3; k++){
+        currentBonus[k] = 0;
+    }
 }
 
 void Pacman::move(int action, Labyrinth* laby,glimac::SDLWindowManager &windowManager){
@@ -68,7 +73,7 @@ void Pacman::move(int action, Labyrinth* laby,glimac::SDLWindowManager &windowMa
             isPrey = true;
             break;
 
-        case 8: laby->applyBonus(windowManager,this);
+        case 8: applyBonus(windowManager,laby);
             break;
 
         case 17:
@@ -176,6 +181,57 @@ void Pacman::canEatGhost(glimac::SDLWindowManager& windowManager) {
     if(windowManager.getTime() >= eatBegin +eatDuration){
         eatBegin = 0;
         isPrey = false;
+    }
+
+}
+
+void Pacman::applyBonus(glimac::SDLWindowManager windowmanage, Labyrinth *laby) {
+
+    switch((int)currentBonus[0]){
+
+        case 1: setNbLives(getNbLives() + 1);
+            currentBonus[0] = 0;
+            currentBonus[1] = 0;
+            break;
+
+        case 2: setEatDuration(getEatDuration()*2);
+            currentBonus[0] = 0;
+            currentBonus[1] = 0;
+            break;
+
+        case 3: setSpeed(getSpeed() *2);
+            currentBonus[2] = (int) windowmanage.getTime();
+            break;
+
+        default: break;
+    }
+}
+
+void Pacman::updateBonus(glimac::SDLWindowManager windowmanage, Labyrinth *laby) {
+    //création d'un bonus
+    if(windowmanage.getTime()> 1 && (int)windowmanage.getTime() % 50 != 0){
+        int randomBonus = std::rand() % 3;
+        currentBonus[0] = randomBonus;
+        currentBonus[1] = (int)windowmanage.getTime();
+        do{
+            randX = std::rand() % 15;
+            randY = std::rand() % 15;
+        }while(laby->getLabyCaseValue(randX,randY)!= 0);
+        laby->setOneCaseLaby(randX,randY,8);
+    }
+
+    //si le bonus n'as pas été mangé pendant le temps imparti
+    if(windowmanage.getTime() >= currentBonus[1]+(int)BonusDuration && currentBonus[2] == 0){
+        laby->setOneCaseLaby(randX,randY,0);
+    }
+    //désactive un bonus temporaire
+    if(currentBonus[2]!= 0 && currentBonus[2] >= (int)BonusDuration){
+        if (currentBonus[0]== 3){
+            setSpeed(getSpeed() / 2);
+        }
+        for(int i = 0; i < 3; i++){
+            currentBonus[i] = 0;
+        }
     }
 
 }

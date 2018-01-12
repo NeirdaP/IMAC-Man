@@ -1,5 +1,5 @@
 #include "../include/Renderer.hpp"
-
+/*
 void Renderer::renderModels() {
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glm::mat4 viewMatrix = m_camera->getViewMatrix();
@@ -13,3 +13,4 @@ void Renderer::addModel(Model* model) {
 }
 
 Renderer::Renderer(Camera *camera) : m_camera(camera) {}
+*/

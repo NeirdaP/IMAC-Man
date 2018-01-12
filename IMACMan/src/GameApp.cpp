@@ -21,7 +21,7 @@ GameApp::GameApp(){
     nbGhosts = 4;
     startAgain = true;
 }
-
+/*
 void GameApp::musiqueApp(){
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
     {
@@ -39,10 +39,10 @@ void GameApp::musiqueApp(){
     Mix_FreeChunk(chunk);
 
     Mix_CloseAudio();
-}
+}*/
 
 void GameApp::appInit(){
-    musiqueApp();
+//    musiqueApp();
 
     board = Board::getInstBoard();              //singleton board
     board->getLabyrinth()->printLaby();
@@ -56,12 +56,12 @@ void GameApp::appInit(){
 
     appCamera = new Camera();
 
-    appRenderer = new Renderer(appCamera);
+//    appRenderer = new Renderer(appCamera);
 
-    Model* model = new Model();
+/*    Model* model = new Model();
 
     appRenderer->addModel(model);
-    appRenderer->renderModels();
+    appRenderer->renderModels();*/
 }
 
 bool GameApp::appLoop(glimac::SDLWindowManager windowManager) {
@@ -81,7 +81,7 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager) {
         }
         appRegenerateghost(windowManager);                  //fonction qui régénère les fantômes lorsqu'ils sont mangés par pacman
         pacman->canEatGhost(windowManager);                 //fonction qui permet a pacman de manger les fantomes s'il a un bonus
-        labyr->updateBonus(windowManager, pacman);
+        pacman->updateBonus(windowManager, labyr);
         pacman->move(pDir, labyr, windowManager);           //fonction qui fait bouger pacman
 
         for (int i = 0; i < nbGhosts; i++) {

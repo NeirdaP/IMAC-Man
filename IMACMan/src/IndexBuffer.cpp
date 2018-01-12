@@ -1,6 +1,6 @@
 #include <assert.h>
 #include "../include/IndexBuffer.hpp"
-
+/*
 IndexBuffer::IndexBuffer(const unsigned int* data, unsigned int count)
     : m_Count(count)
 {
@@ -22,3 +22,4 @@ void IndexBuffer::Bind() const {
 void IndexBuffer::Unbind() const {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
+*/

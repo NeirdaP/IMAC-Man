@@ -1,5 +1,6 @@
 #include "../include/VertexArrayBuffer.hpp"
 #include "glimac/common.hpp"
+/*
 VertexArrayBuffer::VertexArrayBuffer()
 {
     glGenVertexArrays(1, &m_RendererID);
@@ -59,4 +60,4 @@ GLuint VertexArrayBuffer::getM_vertex_attr_texture() const {
 
 void VertexArrayBuffer::setM_vertex_attr_texture(GLuint m_vertex_attr_texture) {
     VertexArrayBuffer::m_vertex_attr_texture = m_vertex_attr_texture;
-}
+}*/
