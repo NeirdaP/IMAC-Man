@@ -47,14 +47,15 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
         while(windowManager.pollEvent(e)){
             checkKeyPressed(e);
         }
+        pacman->canEatGhost(windowManager);
         pacman->move(pDir, labyr);
 
         //int gDir;
         for(int i = 0 ; i < nbGhosts ; i++){
             //gDir = tabGhosts[i]->getDirection();
             tabGhosts[i]->moveRandom(labyr);
-            tabGhosts[i]->eat(pacman);
-            std::cout <<"pac fant " << i <<tabGhosts[i]->getPosX() <<"pac posy" <<tabGhosts[i]->getPosY() << std::endl << std::endl;
+            tabGhosts[i]->eat(pacman,windowManager);
+            std::cout <<"pac fant " << i << "pac pos x"<<tabGhosts[i]->getPosX() <<"pac posy" <<tabGhosts[i]->getPosY() << std::endl << std::endl;
         }
         std::cout <<"pac posx" <<pacman->getPosX() <<"pac posy" <<pacman->getPosY() << std::endl << std::endl;
         Sleep(1000);
@@ -108,5 +109,15 @@ void GameApp::appDisallow(){
     delete pacman;
     for(int i = 0 ; i < nbGhosts ; ++i){
         delete tabGhosts[i];
+    }
+}
+
+void GameApp::appRegenerateghost(glimac::SDLWindowManager windowManager) {
+    for(int i = 0 ; i < nbGhosts ; ++i){
+        if(!tabGhosts[i]->isActive()){
+            if(windowManager.getTime()>= tabGhosts[i]->getPosX()+ tabGhosts[i]->getDeactivatedTime()){
+                tabGhosts[i]->setActive(true);
+            }
+        }
     }
 }
