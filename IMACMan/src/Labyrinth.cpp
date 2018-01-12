@@ -60,6 +60,12 @@ void Labyrinth::printLaby(){
                 case 5: std::cout << "X ";
                     break;
 
+                case 17: std::cout << "| ";
+                    break;
+
+                case 18: std::cout << "| ";
+                    break;
+
                 default: std::cout << tabCases[j + width * i] << " ";
             }
 
