@@ -39,13 +39,15 @@ void GameApp::appInit(){
     Model* model = new Model();
 
     appRenderer->addModel(model);
-    appRenderer->renderModels();
+
 }
 
 bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
     gameIsOn = true;
     Labyrinth * labyr;
     while(gameIsOn){
+
+        appRenderer->renderModels();
 
         board->displayScore(pacman);
         board->displayLives(pacman);

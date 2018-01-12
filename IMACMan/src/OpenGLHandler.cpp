@@ -20,7 +20,7 @@ int OpenGLHandler::start(const std::string &dirPath){
     glimac::FilePath applicationPath(dirPath);
 
     std::string VS = "shaders/3D.vs.glsl";
-    std::string FS = "shaders/multiTex3D.fs.glsl";
+    std::string FS = "shaders/3D.fs.glsl";
 
     glimac::Program program = glimac::loadProgram(VS, FS);
 
@@ -34,6 +34,11 @@ int OpenGLHandler::start(const std::string &dirPath){
 
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
     std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
+
+    setUMVMatrix(getShaderUniformLocation("uMVMatrix"));
+    setUMVPMatrix(getShaderUniformLocation("uMVPMatrix"));
+    setUNormalMatrix(getShaderUniformLocation("uNormalMatrix"));
+
     glEnable(GL_DEPTH_TEST);
 
 #endif
@@ -52,11 +57,11 @@ void OpenGLHandler::sendShaderUniformMatrix4f(GLint targetedMatrixID, glm::mat4 
     glUniformMatrix4fv(targetedMatrixID, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
-void sendShaderUniform3f(GLint targetedVectorID, glm::vec3 vec) {
+void OpenGLHandler::sendShaderUniform3f(GLint targetedVectorID, glm::vec3 vec) {
     glUniform3f(targetedVectorID, vec.x, vec.y, vec.z);
 }
 
-void sendShaderUniform1f(GLint targetedFloatID, float value) {
+void OpenGLHandler::sendShaderUniform1f(GLint targetedFloatID, float value) {
     glUniform1f(targetedFloatID, value);
 }
 
@@ -70,4 +75,68 @@ glimac::Program *OpenGLHandler::getProgram() const {
 
 void OpenGLHandler::setProgram(glimac::Program *program) {
     OpenGLHandler::program = program;
+}
+
+GLint OpenGLHandler::getUMVPMatrix() const {
+    return uMVPMatrix;
+}
+
+void OpenGLHandler::setUMVPMatrix(GLint uMVPMatrix) {
+    OpenGLHandler::uMVPMatrix = uMVPMatrix;
+}
+
+GLint OpenGLHandler::getUMVMatrix() const {
+    return uMVMatrix;
+}
+
+void OpenGLHandler::setUMVMatrix(GLint uMVMatrix) {
+    OpenGLHandler::uMVMatrix = uMVMatrix;
+}
+
+GLint OpenGLHandler::getUNormalMatrix() const {
+    return uNormalMatrix;
+}
+
+void OpenGLHandler::setUNormalMatrix(GLint uNormalMatrix) {
+    OpenGLHandler::uNormalMatrix = uNormalMatrix;
+}
+
+GLint OpenGLHandler::getUKd() const {
+    return uKd;
+}
+
+void OpenGLHandler::setUKd(GLint uKd) {
+    OpenGLHandler::uKd = uKd;
+}
+
+GLint OpenGLHandler::getUKs() const {
+    return uKs;
+}
+
+void OpenGLHandler::setUKs(GLint uKs) {
+    OpenGLHandler::uKs = uKs;
+}
+
+GLint OpenGLHandler::getUShininess() const {
+    return uShininess;
+}
+
+void OpenGLHandler::setUShininess(GLint uShininess) {
+    OpenGLHandler::uShininess = uShininess;
+}
+
+GLint OpenGLHandler::getULightPos_vs() const {
+    return uLightPos_vs;
+}
+
+void OpenGLHandler::setULightPos_vs(GLint uLightPos_vs) {
+    OpenGLHandler::uLightPos_vs = uLightPos_vs;
+}
+
+GLint OpenGLHandler::getULightIntensity() const {
+    return uLightIntensity;
+}
+
+void OpenGLHandler::setULightIntensity(GLint uLightIntensity) {
+    OpenGLHandler::uLightIntensity = uLightIntensity;
 }

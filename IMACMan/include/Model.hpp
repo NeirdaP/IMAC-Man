@@ -6,6 +6,7 @@
 #include "glimac/glm.hpp"
 #include "glimac/common.hpp"
 #include "Sphere.hpp"
+#include "OpenGLHandler.hpp"
 
 class Model{
 private:
@@ -14,6 +15,9 @@ private:
     glm::mat4 modelMatrix;
     Sphere basicMesh;
     //TODO :: texture ?
+    const glm::mat4 &getModelMatrix() const;
+    void setModelMatrix(const glm::mat4 &modelMatrix = glm::mat4(1.0f));
+    OpenGLHandler* glHandler;
 
 public:
     Model();

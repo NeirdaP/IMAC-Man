@@ -1,7 +1,8 @@
+#include <iostream>
 #include "../include/Renderer.hpp"
 
 void Renderer::renderModels() {
-    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glClearColor(0.6f, 0.1f, 0.9f, 1.0f);
     glm::mat4 viewMatrix = m_camera->getViewMatrix();
     for (int i = 0; i < models.size(); ++i) {
         models[i]->render(viewMatrix);

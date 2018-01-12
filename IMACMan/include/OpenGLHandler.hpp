@@ -1,31 +1,74 @@
-
 #ifndef IMACGL_OPENGLHANDLER_HPP
 #define IMACGL_OPENGLHANDLER_HPP
-
+#include <glimac/Program.hpp>
 
 class OpenGLHandler {
+private:
+    OpenGLHandler();
+
+    glimac::Program* program;
+
+    GLint uMVPMatrix;
+    GLint uMVMatrix;
+    GLint uNormalMatrix;
+    GLint uKd;
+    GLint uKs;
+    GLint uShininess;
+    GLint uLightPos_vs;
+    GLint uLightIntensity;
+
 public:
-    int start(const std::string &dirPath);
     static OpenGLHandler& getInstance()
     {
         static OpenGLHandler instance;
         return instance;
     }
-
     ~OpenGLHandler();
 
-    glimac::Program *getProgram() const;
+    int start(const std::string &dirPath);
 
+    glimac::Program *getProgram() const;
     void setProgram(glimac::Program *program);
-private:
-    OpenGLHandler();
+
     void sendShaderUniformMatrix4f(GLint targetedMatrixID, glm::mat4 matrix);
     void sendShaderUniform3f(GLint targetedVectorID, glm::vec3 vec);
     void sendShaderUniform1f(GLint targetedFloatID, float value);
 
     GLint getShaderUniformLocation(std::string);
 
-    glimac::Program* program;
+
+    //Getters & Setters
+    GLint getUMVPMatrix() const;
+
+    void setUMVPMatrix(GLint uMVPMatrix);
+
+    GLint getUMVMatrix() const;
+
+    void setUMVMatrix(GLint uMVMatrix);
+
+    GLint getUNormalMatrix() const;
+
+    void setUNormalMatrix(GLint uNormalMatrix);
+
+    GLint getUKd() const;
+
+    void setUKd(GLint uKd);
+
+    GLint getUKs() const;
+
+    void setUKs(GLint uKs);
+
+    GLint getUShininess() const;
+
+    void setUShininess(GLint uShininess);
+
+    GLint getULightPos_vs() const;
+
+    void setULightPos_vs(GLint uLightPos_vs);
+
+    GLint getULightIntensity() const;
+
+    void setULightIntensity(GLint uLightIntensity);
 };
 
 

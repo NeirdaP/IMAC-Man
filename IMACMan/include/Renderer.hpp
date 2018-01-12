@@ -11,11 +11,9 @@ private:
     std::vector<Model*> models;
     Camera* m_camera;
 public:
-    Renderer();
-
     Renderer(Camera *m_camera);
 
-    ~Renderer(){};
+    ~Renderer() = default;
     void addModel(Model* model);
     void renderModels();
 
