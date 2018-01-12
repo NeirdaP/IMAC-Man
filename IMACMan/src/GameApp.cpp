@@ -70,7 +70,7 @@ bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
         }
         //Sleep(100);
 
-
+        windowManager.swapBuffers();
 
         if(!(pacman->getIsAlive()) || (int)windowManager.getTime()== board->getTime()){
             std::cout << "OK false" << std::endl;
