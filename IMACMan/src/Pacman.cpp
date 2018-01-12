@@ -8,7 +8,7 @@
 #include "../include/Pacman.h"
 
 
-Pacman * Pacman::pacman = nullptr ;
+//Pacman * Pacman::pacman = nullptr ;
 
 Pacman::Pacman(){
     Personnage();
@@ -108,12 +108,12 @@ int Pacman::getPoints(){
     return points;
 }
 
-Pacman *Pacman::getInstPac() {
+/*Pacman *Pacman::getInstPac() {
     if(!pacman){
         pacman = new Pacman();
     }
     return pacman;
-}
+}*/
 
 double Pacman::getEatBegin() const {
     return eatBegin;
