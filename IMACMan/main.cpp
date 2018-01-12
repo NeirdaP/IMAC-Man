@@ -42,10 +42,17 @@ int main(int argc, char** argv) {
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
     //std::cout << "coucou" << std::endl;
+    GameApp * app;
+    bool startAgain = true;
+    while(startAgain){
+        app = new GameApp();
+        app->appInit();
+        startAgain = app->appLoop(refWinMa);
 
-    GameApp * app = new GameApp();
-    app->appInit();
-    app->appLoop(refWinMa);
+        app->appDisallow();
+        delete app;
+    }
+
 
 
 

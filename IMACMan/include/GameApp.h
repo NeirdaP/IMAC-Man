@@ -5,6 +5,7 @@
 #ifndef IMACGL_GAMEAPP_H
 #define IMACGL_GAMEAPP_H
 
+#include <iostream>
 #include "../../glimac/include/glimac/SDLWindowManager.hpp"
 
 #include "../include/Board.h"
@@ -22,12 +23,14 @@ private:
     std::vector<Ghost*> tabGhosts;
     int pDir;
     bool gameIsOn;
+    bool startAgain;
 
 public:
     GameApp();
     void appInit();
-    void appLoop(glimac::SDLWindowManager windowManager);
+    bool appLoop(glimac::SDLWindowManager windowManager);
     void checkKeyPressed(SDL_Event e);
+    void appDisallow();
 };
 
 
