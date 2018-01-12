@@ -14,6 +14,7 @@
 
 GameApp::GameApp(){
     nbGhosts = 4;
+    startAgain = true;
 }
 
 void GameApp::appInit(){
@@ -32,8 +33,9 @@ void GameApp::appInit(){
     }
 }
 
-void GameApp::appLoop(glimac::SDLWindowManager windowManager){
+bool GameApp::appLoop(glimac::SDLWindowManager windowManager){
     gameIsOn = true;
+    Labyrinth * labyr;
     while(gameIsOn){
 
         board->displayScore(pacman);
@@ -45,7 +47,8 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
         while(windowManager.pollEvent(e)){
             checkKeyPressed(e);
         }
-        Labyrinth * labyr = board->getLabyrinth();
+        labyr = board->getLabyrinth();
+        labyr->printLaby();
         pacman->move(pDir, labyr);
 
         //int gDir;
@@ -54,15 +57,16 @@ void GameApp::appLoop(glimac::SDLWindowManager windowManager){
             tabGhosts[i]->moveRandom(labyr);
             tabGhosts[i]->eat(pacman);
         }
-//        Sleep(1000);
+        //Sleep(100);
 
-        labyr->printLaby();
 
-        std::cout << "temps ecoule: " << windowManager.getTime() << " secondes" << std::endl;
-        if(!pacman->getIsAlive() || (int)windowManager.getTime()== board->getTime()){
-//            gameIsOn = false;
+
+        if(!(pacman->getIsAlive()) || (int)windowManager.getTime()== board->getTime()){
+            std::cout << "OK false" << std::endl;
+            gameIsOn = false;
         }
     }
+    return startAgain;
 }
 
 void GameApp::checkKeyPressed(SDL_Event e){
@@ -82,6 +86,12 @@ void GameApp::checkKeyPressed(SDL_Event e){
         else if (e.key.keysym.sym == SDLK_z){
             pDir = 4;
             return;
+        }
+        else if (e.key.keysym.sym == SDLK_ESCAPE){
+            gameIsOn = false;
+            startAgain = false;
+            atexit(SDL_Quit);
+            return;
         }/*
         else if (e.key.keysym.sym == SDLK_UP){
             pacman->zoom();
@@ -92,4 +102,13 @@ void GameApp::checkKeyPressed(SDL_Event e){
         gameIsOn = false; // Leave the loop after this iteration
     }
     //}
+}
+
+void GameApp::appDisallow(){
+    delete board->getLabyrinth();
+    delete board;
+    delete pacman;
+    for(int i = 0 ; i < nbGhosts ; ++i){
+        delete tabGhosts[i];
+    }
 }
